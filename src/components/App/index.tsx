@@ -23,6 +23,9 @@ class App extends Component {
                 >
                     { this.renderLines(resources) }
                     { this.renderLines(schemeData.lines) }
+                    { this.renderLines(schemeData.lineLabels) }
+                    { this.renderLines(schemeData.transfers) }
+                    { this.renderLines(schemeData.stations) }
                 </svg>
             </div>
         );

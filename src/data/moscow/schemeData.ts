@@ -22,6 +22,7 @@ export interface Text extends SVGProps<SVGTextElement> {
 }
 
 export interface SchemeData {
+    assetZoom: number
     lines: (Path|Circle)[]
     lineLabels: (Circle|Text)[]
     transfers: Path[]
@@ -30,6 +31,7 @@ export interface SchemeData {
 }
 
 export const schemeData: SchemeData = {
+    assetZoom: 4,
     lines: [
         {
             type: Shapes.Path,

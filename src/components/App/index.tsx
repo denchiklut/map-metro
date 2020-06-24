@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { resources } from '../../data/moscow/resources'
-import { Circle, Path, schemeData, Shapes } from '../../data/moscow/schemeData'
+import { Circle, Path, Text, schemeData, Shapes } from '../../data/moscow/schemeData'
 
 class App extends Component {
-    renderLines = (items: (Path|Circle)[]): (JSX.Element | null)[]=> {
-        return items.map((item: Path|Circle, index: number): JSX.Element | null => {
+    renderLines = (items: (Path|Circle|Text)[]): (JSX.Element | null)[]=> {
+        return items.map((item: Path|Circle|Text, index: number): JSX.Element | null => {
             switch (item.type) {
                 case Shapes.Path: return <path key={ index } { ...item } />
                 case Shapes.Circle: return <circle key={ index } { ...item } />
+                case Shapes.Text: return <text key={ index } { ...item }>{ item.name }</text>
                 default: return null;
             }
         })

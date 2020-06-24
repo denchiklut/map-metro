@@ -234,7 +234,7 @@ export const schemeData: SchemeData = {
         { type: Shapes.Text, fill: 'white', fontFamily: 'Roboto', fontSize: 15, fontWeight: 'bold', x: 1203.19, y: 1278.13, name: '5' },
         { type: Shapes.Circle, cx: '414', cy: '1033', r: 16, fill: '#FAA400' },
         { type: Shapes.Text, fill: 'white', fontFamily: 'Roboto', fontSize: 15, fontWeight: 'bold', x: 404.315, y: 1038.13, name: 'D1' },
-        { type: Shapes.Circle, cx: '887', cy: '608', r: 16, fill: '#8CD29A' },
+        { type: Shapes.Circle, cx: '887', cy: '608', r: 16, fill: '#48B85E' },
         { type: Shapes.Text, fill: 'white', fontFamily: 'Roboto', fontSize: 15, fontWeight: 'bold', x: 882.193, y: 613.127, name: '2' },
         { type: Shapes.Circle, cx: '1072', cy: '516', r: 16, fill: '#B4D445' },
         { type: Shapes.Text, fill: 'white', fontFamily: 'Roboto', fontSize: 15, fontWeight: 'bold', x: 1062.39, y: 521.127, name: '10' },

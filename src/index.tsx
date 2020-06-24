@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
+import Metro from './components/Metro'
 
 ReactDOM.render(
-    <App />,
+    <Metro />,
   document.getElementById('root')
 )
 

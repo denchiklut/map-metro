@@ -8,7 +8,7 @@ import { resources } from '../../data/moscow/resources'
 import MetroScheme from '../MetroScheme'
 
 import styles from './Metro.module.css'
-import { moove } from '../../helpers'
+import { move } from '../../helpers'
 
 class Metro extends Component {
     parentRef: RefObject<HTMLDivElement> = React.createRef()
@@ -46,13 +46,13 @@ class Metro extends Component {
     setSchemeEvents = (panzoom: PanZoom) => {
         panzoom.on('pan', () => {
             if (this.parentRef.current && this.schemeRef.current) {
-                moove(panzoom, this.parentRef.current, this.schemeRef.current)
+                move(panzoom, this.parentRef.current, this.schemeRef.current)
             }
         })
 
         panzoom.on('zoom', () => {
             if (this.parentRef.current && this.schemeRef.current) {
-                moove(panzoom, this.parentRef.current, this.schemeRef.current)
+                move(panzoom, this.parentRef.current, this.schemeRef.current)
             }
         })
     }

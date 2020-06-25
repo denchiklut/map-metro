@@ -1,8 +1,8 @@
 import React from 'react'
-import { PanZoom } from "panzoom"
+import { PanZoom } from 'panzoom'
 import { Circle, Path, Shapes, Text } from './data/moscow/schemeData'
 
-export const renderLines = (items: (Path|Circle|Text)[]): (JSX.Element | null)[]=> {
+export const renderLines = (items: (Path|Circle|Text)[]): (JSX.Element | null)[] => {
     return items.map((item: Path|Circle|Text, index: number): JSX.Element | null => {
         switch (item.type) {
             case Shapes.Path: return <path key={ index } { ...item } />
@@ -13,7 +13,7 @@ export const renderLines = (items: (Path|Circle|Text)[]): (JSX.Element | null)[]
     })
 }
 
-export function moove(panzoom: PanZoom, parentRef: HTMLDivElement, schemeRef: HTMLDivElement): void {
+export function move(panzoom: PanZoom, parentRef: HTMLDivElement, schemeRef: HTMLDivElement): void {
     if (parentRef && schemeRef) {
         const offset = 112
         const transform = panzoom.getTransform()

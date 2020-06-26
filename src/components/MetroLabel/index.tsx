@@ -29,8 +29,8 @@ class MetroStation extends Component<IProps> {
                     onClick={ this.onStationClick(station) }
                 >
                     { station.labels?.map((item: Label, index: number) => (
-                        <tspan key={ index } { ...item.label }>
-                            { item.label.name }
+                        <tspan key={ index } { ...item }>
+                            { item.name }
                         </tspan>
                     )) }
                 </text>
@@ -43,8 +43,8 @@ class MetroStation extends Component<IProps> {
                     onClick={ this.onStationClick(station) }
                 >
                     { station.labels?.map((item: Label, index: number) => (
-                        <tspan key={ index } { ...item.label }>
-                            { item.label.name }
+                        <tspan key={ index } { ...item }>
+                            { item.name }
                         </tspan>
                     )) }
 

@@ -13,11 +13,15 @@ class MetroStation extends Component<IProps> {
         const { stations } = this.props
 
         return stations.map((station: Circle, index: number):JSX.Element => (
-            <circle
-                key={ index }
-                className={ styles.station }
-                { ...station }
-            />
+            <g key={ index } className={ styles.station }>
+                <circle
+                    fill='white'
+                    r={ 8 }
+                    cx={ station.cx }
+                    cy={ station.cy }
+                />
+                <circle { ...station } />
+            </g>
         ))
     }
 }

@@ -17,19 +17,39 @@ class MetroStation extends Component<IProps> {
         const { labels } = this.props
 
         return labels.map((station: Text, index: number):JSX.Element => (
-            <text
-                key={ index }
-                className={ styles.stationName }
-                { ...station }
-                onClick={ this.onStationClick(station) }
-            >
-                { station.labels?.map((item: Label, index: number) => (
-                    <tspan key={ index } { ...item.label }>
-                        { item.label.name }
-                    </tspan>
-                )) }
+            <g key={ index }  className={ styles.stationName }>
+                <text
+                    fill='black'
+                    stroke='white'
+                    strokeOpacity={ 0.9 }
+                    strokeWidth={ 4 }
+                    fontFamily='Roboto'
+                    fontSize={ 20 }
+                    letterSpacing='0em'
+                    onClick={ this.onStationClick(station) }
+                >
+                    { station.labels?.map((item: Label, index: number) => (
+                        <tspan key={ index } { ...item.label }>
+                            { item.label.name }
+                        </tspan>
+                    )) }
+                </text>
 
-            </text>
+                <text
+                    fill='black'
+                    fontFamily='Roboto'
+                    fontSize={ 20 }
+                    letterSpacing='0em'
+                    onClick={ this.onStationClick(station) }
+                >
+                    { station.labels?.map((item: Label, index: number) => (
+                        <tspan key={ index } { ...item.label }>
+                            { item.label.name }
+                        </tspan>
+                    )) }
+
+                </text>
+            </g>
         ))
     }
 }

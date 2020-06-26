@@ -2,6 +2,6 @@
     cursor: pointer;
 }
 
-.stationName:hover {
+.stationName:hover text {
     fill: red;
 }

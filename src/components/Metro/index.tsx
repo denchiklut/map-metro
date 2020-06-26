@@ -6,9 +6,9 @@ import { schemeMeta } from '../../data/moscow/schemeMeta'
 import { resources } from '../../data/moscow/resources'
 
 import MetroScheme from '../MetroScheme'
+import { move } from '../../helpers'
 
 import styles from './Metro.module.css'
-import { move } from '../../helpers'
 
 class Metro extends Component {
     parentRef: RefObject<HTMLDivElement> = React.createRef()
@@ -62,7 +62,7 @@ class Metro extends Component {
             <div className={ styles.schemeContainer } ref={ this.parentRef }>
                 <div className={ styles.schemeView }>
                     <div
-                        className={ styles.app }
+                        className={ styles.map }
                         ref={ this.schemeRef }
                     >
                         <MetroScheme
@@ -72,6 +72,7 @@ class Metro extends Component {
                             lineLabels={ schemeData.lineLabels }
                             transfers={ schemeData.transfers }
                             stations={ schemeData.stations }
+                            labels={ schemeData.labels }
                         />
                     </div>
                 </div>

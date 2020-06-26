@@ -1,0 +1,7 @@
+.stationName {
+    cursor: pointer;
+}
+
+.stationName:hover {
+    fill: red;
+}

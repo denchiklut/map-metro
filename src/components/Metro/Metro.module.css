@@ -5,7 +5,14 @@ html, body {
     padding: 0;
 }
 
-.app {
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./Roboto-Regular.ttf');
+}
+
+.map {
     width: 3000px;
     height: 3500px;
     will-change: transform;
@@ -31,4 +38,10 @@ html, body {
     outline: 0;
     position: relative;
     touch-action: none;
+}
+
+.delete {
+    position: absolute;
+    top: 0;
+    left: -2px;
 }

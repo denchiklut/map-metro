@@ -4,6 +4,7 @@ import { Circle, Path, Text } from '../../data/moscow/schemeData'
 import { renderLines } from '../../helpers'
 
 import MetroStation from '../MetroStation'
+import MetroLabel from '../MetroLabel'
 
 import styles from './MetroScheme.module.css'
 
@@ -14,6 +15,7 @@ interface IProps {
     lineLabels: (Circle|Text)[]
     transfers: Path[]
     stations: Circle[]
+    labels: Text[]
 }
 
 const MetroScheme = (props: IProps) => {
@@ -24,6 +26,7 @@ const MetroScheme = (props: IProps) => {
         lineLabels,
         transfers,
         stations,
+        labels
     } = props
 
     return (
@@ -40,6 +43,7 @@ const MetroScheme = (props: IProps) => {
                 { renderLines(transfers) }
 
                 <MetroStation stations={ stations } />
+                <MetroLabel labels={ labels } />
             </svg>
         </div>
     )

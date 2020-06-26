@@ -18,15 +18,21 @@ interface IProps {
     labels: Text[]
 }
 
-class MetroScheme extends Component<IProps> {
+interface IState {
+    selectedStations: string[]
+}
+
+class MetroScheme extends Component<IProps, IState> {
+    state = { selectedStations: [] }
+
     onStationClick = (stationId: string) => {
-        let station: Text|null = null;
+        const { selectedStations } = this.state
+
         this.props.labels.forEach((label: Text) => {
             if (label.id === stationId) {
-                station = label
+                this.setState({ selectedStations: [...selectedStations, stationId] })
             }
         })
-        console.log(station)
     }
 
 
@@ -40,22 +46,31 @@ class MetroScheme extends Component<IProps> {
             stations,
             labels
         } = this.props
+        const { selectedStations } = this.state
 
         return (
             <div>
                 <svg
                     version='1.1'
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox={`0 0 ${size.width} ${size.height}`}
-                    className={styles.mapSvg}
+                    viewBox={ `0 0 ${ size.width } ${ size.height }` }
+                    className={ styles.mapSvg }
                 >
-                    {renderLines(resources)}
-                    {renderLines(lines)}
-                    {renderLines(lineLabels)}
-                    {renderLines(transfers)}
+                    { renderLines(resources) }
+                    { renderLines(lines) }
+                    { renderLines(lineLabels) }
+                    { renderLines(transfers) }
 
-                    <MetroStation stations={stations} onStationClick={this.onStationClick}/>
-                    <MetroLabel labels={labels}/>
+                    <MetroStation
+                        stations={ stations }
+                        selectedStations={ selectedStations }
+                        onStationClick={ this.onStationClick }
+                    />
+                    <MetroLabel
+                        labels={ labels }
+                        selectedStations={ selectedStations }
+                        onStationClick={ this.onStationClick }
+                    />
                 </svg>
             </div>
         )

@@ -6,6 +6,10 @@
     fill: red;
 }
 
+.hovered text {
+    fill: red;
+}
+
 .stationWrapper:hover .stationMarker circle {
     fill: #2e2e2e;
 }

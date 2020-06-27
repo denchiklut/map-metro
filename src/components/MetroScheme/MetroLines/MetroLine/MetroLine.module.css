@@ -1,0 +1,8 @@
+.line {
+    cursor: pointer;
+    transition: stroke .3s;
+}
+
+.lineHovered {
+    stroke: #3b3f41;
+}

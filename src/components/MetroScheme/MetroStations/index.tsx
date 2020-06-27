@@ -5,7 +5,8 @@ import MetroStation from './MetroStation'
 
 interface IProps {
     stations: Station[]
-    selectedStations: string[]
+    selectedStations: Station[]
+    hoveredStations: number[]
     onStationClick: (station: Station) => void
 }
 
@@ -14,30 +15,25 @@ class MetroStations extends Component<IProps> {
         this.props.onStationClick(station)
     }
 
-    isSelected = (id: string): boolean => {
-        const { selectedStations } = this.props
+    checkHovered = (id: number): boolean => {
+        const { hoveredStations } = this.props
 
-        for (let i = 0; i <= selectedStations.length; i++) {
-            if (selectedStations[i] === id) return true
-            i++
-        }
-
-        return false
+        return hoveredStations.includes(id)
     }
 
     render() {
-        const { stations } = this.props
+        const { stations, selectedStations } = this.props
 
-        return stations.map((station: Station, index: number):JSX.Element => {
-
-            return (
+        return stations.map((station: Station, index: number):JSX.Element => (
+            <React.Fragment key={ index }>
                 <MetroStation
                     onStationClick={ this.onStationClick }
-                    isSelected={ false }
+                    isSelected={ selectedStations.includes(station) }
+                    isHovered={ this.checkHovered(station.id) }
                     station={ station }
                 />
-            )
-        })
+            </React.Fragment>
+        ))
     }
 }
 

@@ -1,0 +1,8 @@
+.label {
+    cursor: pointer;
+    transition: fill .3s;
+}
+
+.hovered {
+    fill: #3b3f41;
+}

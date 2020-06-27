@@ -1,43 +1,65 @@
 import React, { Component } from 'react'
-import { Circle, Path, Station, Text } from '../../data/moscow/schemeData'
+import { LineCircle, LinePath, Path, Station } from '../../data/moscow/schemeData'
 
 import { renderLines } from '../../helpers'
 
 import MetroStations from './MetroStations'
 
 import styles from './MetroScheme.module.css'
+import MetroLines from './MetroLines'
 
 interface IProps {
     size: { width: number, height: number }
     resources: Path[]
-    lines: (Path | Circle)[]
-    lineLabels: (Circle | Text)[]
+    lines: (LinePath|LineCircle)[]
     transfers: Path[]
     stations: Station[]
 }
 
 interface IState {
     selectedStations: Station[]
+    hoveredStations: number[]
 }
 
 class MetroScheme extends Component<IProps, IState> {
-    state = { selectedStations: [] }
+    state:IState = {
+        selectedStations: [],
+        hoveredStations: []
+    }
 
     onStationClick = (station: Station) => {
+        const { selectedStations } = this.state
+        const index = selectedStations.indexOf(station)
+
+        if (index !== -1) {
+            selectedStations.splice(index, 1)
+        } else  {
+            selectedStations.push(station)
+        }
+
+        this.setState({ selectedStations })
         console.log(station)
     }
 
+    onLineHover = (isHovered: boolean, line: LinePath|LineCircle) => {
+        const { hoveredStations } = this.state
+
+        if (isHovered) {
+            this.setState({ hoveredStations: line.stationIds })
+        } else if (hoveredStations.length !== 0) {
+            this.setState({ hoveredStations: []})
+        }
+    }
 
     render() {
         const {
             size,
             resources,
             lines,
-            lineLabels,
             transfers,
             stations,
         } = this.props
-        const { selectedStations } = this.state
+        const { selectedStations, hoveredStations } = this.state
 
         return (
             <div>
@@ -48,13 +70,15 @@ class MetroScheme extends Component<IProps, IState> {
                     className={ styles.mapSvg }
                 >
                     { renderLines(resources) }
-                    { renderLines(lines) }
-                    { renderLines(lineLabels) }
+
+                    <MetroLines lines={ lines } onLineHover={ this.onLineHover } />
+
                     { renderLines(transfers) }
 
                     <MetroStations
                         stations={ stations }
                         selectedStations={ selectedStations }
+                        hoveredStations={ hoveredStations }
                         onStationClick={ this.onStationClick }
                     />
                 </svg>

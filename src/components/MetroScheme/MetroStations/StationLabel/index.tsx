@@ -2,25 +2,26 @@ import React, { Component } from 'react'
 import { Label } from '../../../../data/moscow/schemeData'
 
 interface Iprops {
+    isSelected: boolean
     labels: Label[]
 }
 
 class StationLabel extends Component<Iprops> {
     render() {
-        const { labels } = this.props
+        const { labels, isSelected } = this.props
 
         return (
             <>
                 <text
                     fill='black'
-                    stroke='white'
+                    stroke={ isSelected ? 'black' : 'white' }
                     strokeOpacity={ 0.9 }
-                    strokeWidth={ 4 }
+                    strokeWidth={ isSelected ? 1: 4 }
                     fontFamily='Roboto'
                     fontSize={ 20 }
                     letterSpacing='0em'
                 >
-                    { labels?.map((item: Label, index: number) => (
+                    { labels.map((item: Label, index: number) => (
                         <tspan key={ index } { ...item }>
                             { item.name }
                         </tspan>
@@ -34,7 +35,7 @@ class StationLabel extends Component<Iprops> {
                     letterSpacing='0em'
 
                 >
-                    { labels?.map((item: Label, index: number) => (
+                    { labels.map((item: Label, index: number) => (
                         <tspan key={ index } { ...item }>
                             { item.name }
                         </tspan>

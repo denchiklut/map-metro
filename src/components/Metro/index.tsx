@@ -69,7 +69,6 @@ class Metro extends Component {
                             size={ schemeMeta.size }
                             resources={ resources }
                             lines={ schemeData.lines }
-                            lineLabels={ schemeData.lineLabels }
                             transfers={ schemeData.transfers }
                             stations={ schemeData.stations }
                         />

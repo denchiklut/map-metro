@@ -14,13 +14,6 @@ export interface Path extends SVGProps<SVGPathElement> {
 export interface Circle extends SVGProps<SVGCircleElement> {
     type: Shapes.Circle
     name?: string
-    stationId?: string
-}
-
-export interface Label {
-    x: number
-    y: number
-    name: string
 }
 
 export interface Text extends SVGProps<SVGTextElement> {
@@ -29,13 +22,29 @@ export interface Text extends SVGProps<SVGTextElement> {
     name?: string
 }
 
+export interface Label {
+    x: number
+    y: number
+    name: string
+    type: Shapes.Text
+}
+
+export interface Station {
+    labels: Label[]
+    stationName: string
+    markers: Circle[]
+}
+
+export interface StationName extends Text {
+    id: string
+}
+
 export interface SchemeData {
     assetZoom: number
     lines: (Path|Circle)[]
     lineLabels: (Circle|Text)[]
     transfers: Path[]
-    stations: Circle[]
-    labels: Text[]
+    stations: Station[]
 }
 
 export const schemeData: SchemeData = {
@@ -453,624 +462,6192 @@ export const schemeData: SchemeData = {
         { type: Shapes.Path, fill: 'none', d: 'M2049 1596H2089', stroke:'#AAAAAA', strokeWidth:'2' }
     ],
     stations: [
-        { stationId: '55', type: Shapes.Circle, cx: 1216, cy: 2507, r: 5, fill: '#DA2128' },
-        { stationId: '54', type: Shapes.Circle, cx: 1167, cy: 2457, r: 5, fill: '#DA2128' },
-        { stationId: '53', type: Shapes.Circle, cx: 1117, cy: 2407, r: 5, fill: '#DA2128' },
-        { stationId: '52', type: Shapes.Circle, cx: 1067, cy: 2356, r: 5, fill: '#DA2128' },
-        { stationId: '51', type: Shapes.Circle, cx: 1044, cy: 2296, r: 5, fill: '#DA2128' },
-        { stationId: '50', type: Shapes.Circle, cx: 1044, cy: 2226, r: 5, fill: '#DA2128' },
-        { stationId: '49', type: Shapes.Circle, cx: 1044, cy: 2156, r: 5, fill: '#DA2128' },
-        { stationId: '48', type: Shapes.Circle, cx: 1044, cy: 2086, r: 5, fill: '#DA2128' },
-        { stationId: '47', type: Shapes.Circle, cx: 1044, cy: 2016, r: 5, fill: '#DA2128' },
-        { stationId: '46', type: Shapes.Circle, cx: 1044, cy: 1946, r: 5, fill: '#DA2128' },
-        { stationId: '45', type: Shapes.Circle, cx: 1068, cy: 1859, r: 5, fill: '#DA2128' },
-        { stationId: '44', type: Shapes.Circle, cx: 1137, cy: 1790, r: 5, fill: '#DA2128' },
-        { stationId: '43', type: Shapes.Circle, cx: 1185, cy: 1744, r: 5, fill: '#DA2128' },
-        { stationId: '42', type: Shapes.Circle, cx: 1252, cy: 1676, r: 5, fill: '#DA2128' },
-        { stationId: '41', type: Shapes.Circle, cx: 1301, cy: 1629, r: 5, fill: '#DA2128' },
-        { stationId: '40', type: Shapes.Circle, cx: 1372, cy: 1558, r: 5, fill: '#DA2128' },
-        { stationId: '39', type: Shapes.Circle, cx: 1502, cy: 1429, r: 5, fill: '#DA2128' },
-        { stationId: '38', type: Shapes.Circle, cx: 1572, cy: 1359, r: 5, fill: '#DA2128' },
-        { stationId: '37', type: Shapes.Circle, cx: 1644, cy: 1288, r: 5, fill: '#DA2128' },
-        { stationId: '36', type: Shapes.Circle, cx: 1700, cy: 1232, r: 5, fill: '#DA2128' },
-        { stationId: '35', type: Shapes.Circle, cx: 1737, cy: 1193, r: 5, fill: '#DA2128' },
-        { stationId: '34', type: Shapes.Circle, cx: 1831, cy: 1099, r: 5, fill: '#DA2128' },
-        { stationId: '33', type: Shapes.Circle, cx: 1878, cy: 1052, r: 5, fill: '#DA2128' },
-        { stationId: '32', type: Shapes.Circle, cx: 1925, cy: 1005, r: 5, fill: '#DA2128' },
-        { stationId: '31', type: Shapes.Circle, cx: 1950, cy: 933, r: 5, fill: '#DA2128' },
-        { stationId: '30', type: Shapes.Circle, cx: 1886, cy: 869, r: 5, fill: '#DA2128' },
-        { stationId: '77', type: Shapes.Circle, cx: '2340', cy: '2321', r: '5', fill: '#48B85E'},
-        { stationId: '76', type: Shapes.Circle, cx: '2217', cy: '2321', r: '5', fill: '#48B85E'},
-        { stationId: '75', type: Shapes.Circle, cx: '2113', cy: '2321', r: '5', fill: '#48B85E'},
-        { stationId: '74', type: Shapes.Circle, cx: '2045', cy: '2276', r: '5', fill: '#48B85E'},
-        { stationId: '73', type: Shapes.Circle, cx: '1959', cy: '2191', r: '5', fill: '#48B85E'},
-        { stationId: '72', type: Shapes.Circle, cx: '1917', cy: '2144', r: '5', fill: '#48B85E'},
-        { stationId: '71', type: Shapes.Circle, cx: '1892', cy: '2042', r: '5', fill: '#48B85E'},
-        { stationId: '70', type: Shapes.Circle, cx: '1891', cy: '1952', r: '5', fill: '#48B85E'},
-        { stationId: '69', type: Shapes.Circle, cx: '1891', cy: '1862', r: '5', fill: '#48B85E'},
-        { stationId: '68', type: Shapes.Circle, cx: '1847', cy: '1794', r: '5', fill: '#48B85E'},
-        { stationId: '113', type: Shapes.Circle, cx: '1730', cy: '1682', r: '5', fill: '#48B85E'},
-        { stationId: '67', type: Shapes.Circle, cx: '1629', cy: '1581', r: '5', fill: '#48B85E'},
-        { stationId: '66', type: Shapes.Circle, cx: '1502', cy: '1453', r: '5', fill: '#48B85E'},
-        { stationId: '65', type: Shapes.Circle, cx: '1373', cy: '1325', r: '5', fill: '#48B85E'},
-        { stationId: '64', type: Shapes.Circle, cx: '1298', cy: '1247', r: '5', fill: '#48B85E'},
-        { stationId: '117', type: Shapes.Circle, cx: '1247', cy: '1194', r: '5', fill: '#48B85E'},
-        { stationId: '63', type: Shapes.Circle, cx: '1138', cy: '1085', r: '5', fill: '#48B85E'},
-        { stationId: '62', type: Shapes.Circle, cx: '1099', cy: '1046', r: '5', fill: '#48B85E'},
-        { stationId: '61', type: Shapes.Circle, cx: '1062', cy: '1010', r: '5', fill: '#48B85E'},
-        { stationId: '60', type: Shapes.Circle, cx: '967', cy: '915', r: '5', fill: '#48B85E'},
-        { stationId: '59', type: Shapes.Circle, cx: '890', cy: '805', r: '5', fill: '#48B85E'},
-        { stationId: '58', type: Shapes.Circle, cx: '890', cy: '760', r: '5', fill: '#48B85E'},
-        { stationId: '57', type: Shapes.Circle, cx: '890', cy: '715', r: '5', fill: '#48B85E'},
-        { stationId: '56', type: Shapes.Circle, cx: '890', cy: '670', r: '5', fill: '#48B85E'},
-        { stationId: '78', type: Shapes.Circle, cx: '2231', cy: '926', r: '5', fill: '#0078BF'},
-        { stationId: '79', type: Shapes.Circle, cx: '2230', cy: '1005', r: '5', fill: '#0078BF'},
-        { stationId: '80', type: Shapes.Circle, cx: '2190', cy: '1089', r: '5', fill: '#0078BF'},
-        { stationId: '81', type: Shapes.Circle, cx: '2132', cy: '1150', r: '5', fill: '#0078BF'},
-        { stationId: '82', type: Shapes.Circle, cx: '2073', cy: '1207', r: '5', fill: '#0078BF'},
-        { stationId: '83', type: Shapes.Circle, cx: '2014', cy: '1264', r: '5', fill: '#0078BF'},
-        { stationId: '84', type: Shapes.Circle, cx: '1955', cy: '1321', r: '5', fill: '#0078BF'},
-        { stationId: '14', type: Shapes.Circle, cx: '1876', cy: '1405', r: '5', fill: '#0078BF'},
-        { stationId: '85', type: Shapes.Circle, cx: '1502', cy: '1477', r: '5', fill: '#0078BF'},
-        { stationId: '86', type: Shapes.Circle, cx: '1352', cy: '1537', r: '5', fill: '#0078BF'},
-        { stationId: '87', type: Shapes.Circle, cx: '1203', cy: '1537', r: '5', fill: '#0078BF'},
-        { stationId: '88', type: Shapes.Circle, cx: '1124', cy: '1534', r: '5', fill: '#0078BF'},
-        { stationId: '167', type: Shapes.Circle, cx: '800', cy: '1665', r: '5', fill: '#0078BF'},
-        { stationId: '89', type: Shapes.Circle, cx: '621', cy: '1484', r: '5', fill: '#0078BF'},
-        { stationId: '90', type: Shapes.Circle, cx: '569', cy: '1361', r: '5', fill: '#0078BF'},
-        { stationId: '91', type: Shapes.Circle, cx: '569', cy: '1246', r: '5', fill: '#0078BF'},
-        { stationId: '92', type: Shapes.Circle, cx: '569', cy: '1176', r: '5', fill: '#0078BF'},
-        { stationId: '93', type: Shapes.Circle, cx: '569', cy: '1106', r: '5', fill: '#0078BF'},
-        { stationId: '94', type: Shapes.Circle, cx: '569', cy: '1036', r: '5', fill: '#0078BF'},
-        { stationId: '95', type: Shapes.Circle, cx: '569', cy: '941', r: '5', fill: '#0078BF'},
-        { stationId: '96', type: Shapes.Circle, cx: '569', cy: '846', r: '5', fill: '#0078BF'},
-        { stationId: '97', type: Shapes.Circle, cx: '569', cy: '768', r: '5', fill: '#0078BF'},
-        { stationId: '90', type: Shapes.Circle, cx: '594', cy: '1361', r: '5', fill: '#00C1F3'},
-        { stationId: '99', type: Shapes.Circle, cx: '654', cy: '1420', r: '5', fill: '#00C1F3'},
-        { stationId: '100', type: Shapes.Circle, cx: '710', cy: '1476', r: '5', fill: '#00C1F3'},
-        { stationId: '101', type: Shapes.Circle, cx: '765', cy: '1530', r: '5', fill: '#00C1F3'},
-        { stationId: '102', type: Shapes.Circle, cx: '809', cy: '1576', r: '5', fill: '#00C1F3'},
-        { stationId: '103', type: Shapes.Circle, cx: '924', cy: '1611', r: '5', fill: '#00C1F3'},
-        { stationId: '4', type: Shapes.Circle, cx: '987', cy: '1547', r: '5', fill: '#00C1F3'},
-        { stationId: '88', type: Shapes.Circle, cx: '1124', cy: '1514', r: '5', fill: '#00C1F3'},
-        { stationId: '105', type: Shapes.Circle, cx: '1206', cy: '1478', r: '5', fill: '#00C1F3'},
-        { stationId: '106', type: Shapes.Circle, cx: '1285', cy: '1478', r: '5', fill: '#00C1F3'},
-        { stationId: '107', type: Shapes.Circle, cx: '1371', cy: '1537', r: '5', fill: '#00C1F3'},
-        { stationId: '108', type: Shapes.Circle, cx: '967', cy: '1458', r: '5', fill: '#00C1F3'},
-        { stationId: '109', type: Shapes.Circle, cx: '857', cy: '1383', r: '5', fill: '#00C1F3'},
-        { stationId: '117', type: Shapes.Circle, cx: '1232', cy: '1179', r: '5', fill: '#894E35'},
-        { stationId: '116', type: Shapes.Circle, cx: '1390', cy: '1084', r: '5', fill: '#894E35'},
-        { stationId: '125', type: Shapes.Circle, cx: '1666', cy: '1111', r: '5', fill: '#894E35'},
-        { stationId: '35', type: Shapes.Circle, cx: '1752', cy: '1178', r: '5', fill: '#894E35'},
-        { stationId: '14', type: Shapes.Circle, cx: '1856', cy: '1384', r: '5', fill: '#894E35'},
-        { stationId: '114', type: Shapes.Circle, cx: '1823', cy: '1593', r: '5', fill: '#894E35'},
-        { stationId: '113', type: Shapes.Circle, cx: '1745', cy: '1696', r: '5', fill: '#894E35'},
-        { stationId: '112', type: Shapes.Circle, cx: '1581', cy: '1788', r: '5', fill: '#894E35'},
-        { stationId: '111', type: Shapes.Circle, cx: '1401', cy: '1785', r: '5', fill: '#894E35'},
-        { stationId: '42', type: Shapes.Circle, cx: '1237', cy: '1691', r: '5', fill: '#894E35'},
-        { stationId: '88', type: Shapes.Circle, cx: '1140', cy: '1525', r: '5', fill: '#894E35'},
-        { stationId: '118', type: Shapes.Circle, cx: '1141', cy: '1345', r: '5', fill: '#894E35'},
-        { stationId: '139', type: Shapes.Circle, cx: '1410', cy: '2322', r: '5', fill: '#F58220'},
-        { stationId: '138', type: Shapes.Circle, cx: '1372', cy: '2281', r: '5', fill: '#F58220'},
-        { stationId: '137', type: Shapes.Circle, cx: '1337', cy: '2246', r: '5', fill: '#F58220'},
-        { stationId: '136', type: Shapes.Circle, cx: '1314', cy: '2196', r: '5', fill: '#F58220'},
-        { stationId: '135', type: Shapes.Circle, cx: '1314', cy: '2146', r: '5', fill: '#F58220'},
-        { stationId: '134', type: Shapes.Circle, cx: '1314', cy: '2096', r: '5', fill: '#F58220'},
-        { stationId: '133', type: Shapes.Circle, cx: '1314', cy: '2046', r: '5', fill: '#F58220'},
-        { stationId: '132', type: Shapes.Circle, cx: '1314', cy: '1997', r: '5', fill: '#F58220'},
-        { stationId: '131', type: Shapes.Circle, cx: '1315', cy: '1949', r: '5', fill: '#F58220'},
-        { stationId: '130', type: Shapes.Circle, cx: '1314', cy: '1888', r: '5', fill: '#F58220'},
-        { stationId: '129', type: Shapes.Circle, cx: '1344', cy: '1841', r: '5', fill: '#F58220'},
-        { stationId: '111', type: Shapes.Circle, cx: '1416', cy: '1770', r: '5', fill: '#F58220'},
-        { stationId: '166', type: Shapes.Circle, cx: '1607', cy: '1581', r: '5', fill: '#F58220'},
-        { stationId: '128', type: Shapes.Circle, cx: '1666', cy: '1406', r: '5', fill: '#F58220'},
-        { stationId: '127', type: Shapes.Circle, cx: '1665', cy: '1293', r: '5', fill: '#F58220'},
-        { stationId: '126', type: Shapes.Circle, cx: '1666', cy: '1197', r: '5', fill: '#F58220'},
-        { stationId: '125', type: Shapes.Circle, cx: '1666', cy: '1130', r: '5', fill: '#F58220'},
-        { stationId: '12', type: Shapes.Circle, cx: '1666', cy: '1053', r: '5', fill: '#F58220'},
-        { stationId: '124', type: Shapes.Circle, cx: '1666', cy: '926', r: '5', fill: '#F58220'},
-        { stationId: '123', type: Shapes.Circle, cx: '1666', cy: '826', r: '5', fill: '#F58220'},
-        { stationId: '122', type: Shapes.Circle, cx: '1666', cy: '691', r: '5', fill: '#F58220'},
-        { stationId: '121', type: Shapes.Circle, cx: '1666', cy: '645', r: '5', fill: '#F58220'},
-        { stationId: '120', type: Shapes.Circle, cx: '1666', cy: '597', r: '5', fill: '#F58220'},
-        { stationId: '119', type: Shapes.Circle, cx: '1666', cy: '551', r: '5', fill: '#F58220'},
-        { stationId: '159', type: Shapes.Circle, cx: '2381', cy: '2028', r: '5', fill: '#8E479B'},
-        { stationId: '158', type: Shapes.Circle, cx: '2380', cy: '1962', r: '5', fill: '#8E479B'},
-        { stationId: '157', type: Shapes.Circle, cx: '2380', cy: '1864', r: '5', fill: '#8E479B'},
-        { stationId: '156', type: Shapes.Circle, cx: '2354', cy: '1816', r: '5', fill: '#8E479B'},
-        { stationId: '155', type: Shapes.Circle, cx: '2299', cy: '1762', r: '5', fill: '#8E479B'},
-        { stationId: '154', type: Shapes.Circle, cx: '2232', cy: '1697', r: '5', fill: '#8E479B'},
-        { stationId: '153', type: Shapes.Circle, cx: '2145', cy: '1641', r: '5', fill: '#8E479B'},
-        { stationId: '152', type: Shapes.Circle, cx: '2059', cy: '1641', r: '5', fill: '#8E479B'},
-        { stationId: '151', type: Shapes.Circle, cx: '1935', cy: '1641', r: '5', fill: '#8E479B'},
-        { stationId: '114', type: Shapes.Circle, cx: '1843', cy: '1604', r: '5', fill: '#8E479B'},
-        { stationId: '128', type: Shapes.Circle, cx: '1666', cy: '1426', r: '5', fill: '#8E479B'},
-        { stationId: '150', type: Shapes.Circle, cx: '1587', cy: '1345', r: '5', fill: '#8E479B'},
-        { stationId: '149', type: Shapes.Circle, cx: '1362', cy: '1344', r: '5', fill: '#8E479B'},
-        { stationId: '148', type: Shapes.Circle, cx: '1161', cy: '1345', r: '5', fill: '#8E479B'},
-        { stationId: '147', type: Shapes.Circle, cx: '1071', cy: '1335', r: '5', fill: '#8E479B'},
-        { stationId: '281', type: Shapes.Circle, cx: '1024', cy: '1291', r: '5', fill: '#8E479B'},
-        { stationId: '146', type: Shapes.Circle, cx: '927', cy: '1194', r: '5', fill: '#8E479B'},
-        { stationId: '145', type: Shapes.Circle, cx: '885', cy: '1091', r: '5', fill: '#8E479B'},
-        { stationId: '144', type: Shapes.Circle, cx: '856', cy: '1035', r: '5', fill: '#8E479B'},
-        { stationId: '143', type: Shapes.Circle, cx: '816', cy: '997', r: '5', fill: '#8E479B'},
-        { stationId: '142', type: Shapes.Circle, cx: '750', cy: '931', r: '5', fill: '#8E479B'},
-        { stationId: '141', type: Shapes.Circle, cx: '693', cy: '849', r: '5', fill: '#8E479B'},
-        { stationId: '140', type: Shapes.Circle, cx: '694', cy: '765', r: '5', fill: '#8E479B'},
-        { stationId: '166', type: Shapes.Circle, cx: '1618', cy: '1600', r: '5', fill: '#FFC61A'},
-        { stationId: '165', type: Shapes.Circle, cx: '1824', cy: '1615', r: '5', fill: '#FFC61A'},
-        { stationId: '164', type: Shapes.Circle, cx: '1953', cy: '1522', r: '5', fill: '#FFC61A'},
-        { stationId: '262', type: Shapes.Circle, cx: '2024', cy: '1451', r: '5', fill: '#FFC61A'},
-        { stationId: '255', type: Shapes.Circle, cx: '2156', cy: '1327', r: '5', fill: '#FFC61A'},
-        { stationId: '162', type: Shapes.Circle, cx: '2260', cy: '1326', r: '5', fill: '#FFC61A'},
-        { stationId: '161', type: Shapes.Circle, cx: '2362', cy: '1325', r: '5', fill: '#FFC61A'},
-        { stationId: '160', type: Shapes.Circle, cx: '2455', cy: '1325', r: '5', fill: '#FFC61A'},
-        { stationId: '177', type: Shapes.Circle, cx: '754', cy: '2193', r: '5', fill: '#FFC61A'},
-        { stationId: '176', type: Shapes.Circle, cx: '754', cy: '2146', r: '5', fill: '#FFC61A'},
-        { stationId: '175', type: Shapes.Circle, cx: '754', cy: '2096', r: '5', fill: '#FFC61A'},
-        { stationId: '174', type: Shapes.Circle, cx: '754', cy: '2046', r: '5', fill: '#FFC61A'},
-        { stationId: '173', type: Shapes.Circle, cx: '754', cy: '1996', r: '5', fill: '#FFC61A'},
-        { stationId: '172', type: Shapes.Circle, cx: '754', cy: '1946', r: '5', fill: '#FFC61A'},
-        { stationId: '171', type: Shapes.Circle, cx: '754', cy: '1896', r: '5', fill: '#FFC61A'},
-        { stationId: '170', type: Shapes.Circle, cx: '754', cy: '1846', r: '5', fill: '#FFC61A'},
-        { stationId: '169', type: Shapes.Circle, cx: '754', cy: '1796', r: '5', fill: '#FFC61A'},
-        { stationId: '168', type: Shapes.Circle, cx: '764', cy: '1700', r: '5', fill: '#FFC61A'},
-        { stationId: '167', type: Shapes.Circle, cx: '813', cy: '1652', r: '5', fill: '#FFC61A'},
-        { stationId: '245', type: Shapes.Circle, cx: '898', cy: '1315', r: '5', fill: '#FFC61A'},
-        { stationId: '229', type: Shapes.Circle, cx: '927', cy: '1214', r: '5', fill: '#FFC61A'},
-        { stationId: '230', type: Shapes.Circle, cx: '1015', cy: '1125', r: '5', fill: '#FFC61A'},
-        { stationId: '231', type: Shapes.Circle, cx: '1138', cy: '1113', r: '5', fill: '#FFC61A'},
-        { stationId: '184', type: Shapes.Circle, cx: '1281', cy: '1009', r: '5', fill: '#FFC61A'},
-        { stationId: '201', type: Shapes.Circle, cx: '1666', cy: '2397', r: '5', fill: '#A1A2A3'},
-        { stationId: '200', type: Shapes.Circle, cx: '1666', cy: '2346', r: '5', fill: '#A1A2A3'},
-        { stationId: '199', type: Shapes.Circle, cx: '1666', cy: '2296', r: '5', fill: '#A1A2A3'},
-        { stationId: '198', type: Shapes.Circle, cx: '1666', cy: '2246', r: '5', fill: '#A1A2A3'},
-        { stationId: '197', type: Shapes.Circle, cx: '1666', cy: '2196', r: '5', fill: '#A1A2A3'},
-        { stationId: '196', type: Shapes.Circle, cx: '1666', cy: '2146', r: '5', fill: '#A1A2A3'},
-        { stationId: '195', type: Shapes.Circle, cx: '1666', cy: '2096', r: '5', fill: '#A1A2A3'},
-        { stationId: '194', type: Shapes.Circle, cx: '1666', cy: '2045', r: '5', fill: '#A1A2A3'},
-        { stationId: '193', type: Shapes.Circle, cx: '1666', cy: '1997', r: '5', fill: '#A1A2A3'},
-        { stationId: '192', type: Shapes.Circle, cx: '1666', cy: '1940', r: '5', fill: '#A1A2A3'},
-        { stationId: '191', type: Shapes.Circle, cx: '1646', cy: '1850', r: '5', fill: '#A1A2A3'},
-        { stationId: '190', type: Shapes.Circle, cx: '1566', cy: '1773', r: '5', fill: '#A1A2A3'},
-        { stationId: '189', type: Shapes.Circle, cx: '1517', cy: '1721', r: '5', fill: '#A1A2A3'},
-        { stationId: '188', type: Shapes.Circle, cx: '1352', cy: '1558', r: '5', fill: '#A1A2A3'},
-        { stationId: '187', type: Shapes.Circle, cx: '1351', cy: '1325', r: '5', fill: '#A1A2A3'},
-        { stationId: '186', type: Shapes.Circle, cx: '1481', cy: '1185', r: '5', fill: '#A1A2A3'},
-        { stationId: '185', type: Shapes.Circle, cx: '1403', cy: '1098', r: '5', fill: '#A1A2A3'},
-        { stationId: '184', type: Shapes.Circle, cx: '1314', cy: '1009', r: '5', fill: '#A1A2A3'},
-        { stationId: '11', type: Shapes.Circle, cx: '1298', cy: '939', r: '5', fill: '#A1A2A3'},
-        { stationId: '183', type: Shapes.Circle, cx: '1298', cy: '873', r: '5', fill: '#A1A2A3'},
-        { stationId: '182', type: Shapes.Circle, cx: '1298', cy: '801', r: '5', fill: '#A1A2A3'},
-        { stationId: '181', type: Shapes.Circle, cx: '1298', cy: '706', r: '5', fill: '#A1A2A3'},
-        { stationId: '180', type: Shapes.Circle, cx: '1298', cy: '645', r: '5', fill: '#A1A2A3'},
-        { stationId: '179', type: Shapes.Circle, cx: '1298', cy: '595', r: '5', fill: '#A1A2A3'},
-        { stationId: '178', type: Shapes.Circle, cx: '1298', cy: '545', r: '5', fill: '#A1A2A3'},
-        { stationId: '222', type: Shapes.Circle, cx: '2217', cy: '2296', r: '5', fill: '#B4D445'},
-        { stationId: '221', type: Shapes.Circle, cx: '2216', cy: '2240', r: '5', fill: '#B4D445'},
-        { stationId: '220', type: Shapes.Circle, cx: '2216', cy: '2180', r: '5', fill: '#B4D445'},
-        { stationId: '219', type: Shapes.Circle, cx: '2216', cy: '2120', r: '5', fill: '#B4D445'},
-        { stationId: '218', type: Shapes.Circle, cx: '2216', cy: '2060', r: '5', fill: '#B4D445'},
-        { stationId: '217', type: Shapes.Circle, cx: '2216', cy: '1999', r: '5', fill: '#B4D445'},
-        { stationId: '216', type: Shapes.Circle, cx: '2176', cy: '1930', r: '5', fill: '#B4D445'},
-        { stationId: '215', type: Shapes.Circle, cx: '2098', cy: '1851', r: '5', fill: '#B4D445'},
-        { stationId: '214', type: Shapes.Circle, cx: '2020', cy: '1774', r: '5', fill: '#B4D445'},
-        { stationId: '252', type: Shapes.Circle, cx: '1945', cy: '1700', r: '5', fill: '#B4D445'},
-        { stationId: '213', type: Shapes.Circle, cx: '1935', cy: '1618', r: '5', fill: '#B4D445'},
-        { stationId: '212', type: Shapes.Circle, cx: '1935', cy: '1504', r: '5', fill: '#B4D445'},
-        { stationId: '211', type: Shapes.Circle, cx: '1856', cy: '1404', r: '5', fill: '#B4D445'},
-        { stationId: '210', type: Shapes.Circle, cx: '1649', cy: '1308', r: '5', fill: '#B4D445'},
-        { stationId: '209', type: Shapes.Circle, cx: '1502', cy: '1185', r: '5', fill: '#B4D445'},
-        { stationId: '208', type: Shapes.Circle, cx: '1501', cy: '1053', r: '5', fill: '#B4D445'},
-        { stationId: '207', type: Shapes.Circle, cx: '1500', cy: '991', r: '5', fill: '#B4D445'},
-        { stationId: '206', type: Shapes.Circle, cx: '1479', cy: '909', r: '5', fill: '#B4D445'},
-        { stationId: '205', type: Shapes.Circle, cx: '1414', cy: '843', r: '5', fill: '#B4D445'},
-        { stationId: '182', type: Shapes.Circle, cx: '1318', cy: '801', r: '5', fill: '#B4D445'},
-        { stationId: '204', type: Shapes.Circle, cx: '1234', cy: '776', r: '5', fill: '#B4D445'},
-        { stationId: '203', type: Shapes.Circle, cx: '1130', cy: '670', r: '5', fill: '#B4D445'},
-        { stationId: '202', type: Shapes.Circle, cx: '1074', cy: '577', r: '5', fill: '#B4D445'},
-        { stationId: '225', type: Shapes.Circle, cx: '967', cy: '1438', r: '5', fill: '#6AC9C8'},
-        { stationId: '245', type: Shapes.Circle, cx: '910', cy: '1327', r: '5', fill: '#6AC9C8'},
-        { stationId: '229', type: Shapes.Circle, cx: '927', cy: '1229', r: '5', fill: '#6AC9C8'},
-        { stationId: '230', type: Shapes.Circle, cx: '1016', cy: '1140', r: '5', fill: '#6AC9C8'},
-        { stationId: '231', type: Shapes.Circle, cx: '1138', cy: '1125', r: '5', fill: '#6AC9C8'},
-        { stationId: '184', type: Shapes.Circle, cx: '1296', cy: '1009', r: '5', fill: '#6AC9C8'},
-        { stationId: '238', type: Shapes.Circle, cx: '1643', cy: '2666', r: '5', fill: '#ACBFE3'},
-        { stationId: '237', type: Shapes.Circle, cx: '1642', cy: '2601', r: '5', fill: '#ACBFE3'},
-        { stationId: '236', type: Shapes.Circle, cx: '1642', cy: '2535', r: '5', fill: '#ACBFE3'},
-        { stationId: '235', type: Shapes.Circle, cx: '1642', cy: '2466', r: '5', fill: '#ACBFE3'},
-        { stationId: '234', type: Shapes.Circle, cx: '1642', cy: '2397', r: '5', fill: '#ACBFE3'},
-        { stationId: '233', type: Shapes.Circle, cx: '1554', cy: '2337', r: '5', fill: '#ACBFE3'},
-        { stationId: '232', type: Shapes.Circle, cx: '1425', cy: '2337', r: '5', fill: '#ACBFE3'},
-        { stationId: '270', type: Shapes.Circle, cx: '2562', cy: '2034', r: '5', fill: '#E66AC0'},
-        { stationId: '269', type: Shapes.Circle, cx: '2561', cy: '1978', r: '5', fill: '#E66AC0'},
-        { stationId: '268', type: Shapes.Circle, cx: '2560', cy: '1922', r: '5', fill: '#E66AC0'},
-        { stationId: '267', type: Shapes.Circle, cx: '2380', cy: '1888', r: '5', fill: '#E66AC0'},
-        { stationId: '266', type: Shapes.Circle, cx: '2289', cy: '1815', r: '5', fill: '#E66AC0'},
-        { stationId: '265', type: Shapes.Circle, cx: '2263', cy: '1697', r: '5', fill: '#E66AC0'},
-        { stationId: '264', type: Shapes.Circle, cx: '2178', cy: '1570', r: '5', fill: '#E66AC0'},
-        { stationId: '263', type: Shapes.Circle, cx: '2097', cy: '1489', r: '5', fill: '#E66AC0'},
-        { stationId: '262', type: Shapes.Circle, cx: '2024', cy: '1416', r: '5', fill: '#E66AC0'},
-        { stationId: '261', type: Shapes.Circle, cx: '1994', cy: '1358', r: '5', fill: '#E66AC0'},
-        { stationId: '241', type: Shapes.Circle, cx: '1017', cy: '915', r: '5', fill: '#FFA8AF'},
-        { stationId: '240', type: Shapes.Circle, cx: '1069', cy: '862', r: '5', fill: '#FFA8AF'},
-        { stationId: '239', type: Shapes.Circle, cx: '1136', cy: '808', r: '5', fill: '#FFA8AF'},
-        { stationId: '204', type: Shapes.Circle, cx: '1234', cy: '750', r: '5', fill: '#FFA8AF'},
-        { stationId: '181', type: Shapes.Circle, cx: '1298', cy: '725', r: '5', fill: '#FFA8AF'},
-        { stationId: '122', type: Shapes.Circle, cx: '1645', cy: '711', r: '5', fill: '#FFA8AF'},
-        { stationId: '260', type: Shapes.Circle, cx: '1785', cy: '765', r: '5', fill: '#FFA8AF'},
-        { stationId: '259', type: Shapes.Circle, cx: '1842', cy: '798', r: '5', fill: '#FFA8AF'},
-        { stationId: '30', type: Shapes.Circle, cx: '1886', cy: '831', r: '5', fill: '#FFA8AF'},
-        { stationId: '258', type: Shapes.Circle, cx: '1971', cy: '914', r: '5', fill: '#FFA8AF'},
-        { stationId: '257', type: Shapes.Circle, cx: '2094', cy: '1150', r: '5', fill: '#FFA8AF'},
-        { stationId: '256', type: Shapes.Circle, cx: '2113', cy: '1245', r: '5', fill: '#FFA8AF'},
-        { stationId: '255', type: Shapes.Circle, cx: '2116', cy: '1327', r: '5', fill: '#FFA8AF'},
-        { stationId: '254', type: Shapes.Circle, cx: '2111', cy: '1405', r: '5', fill: '#FFA8AF'},
-        { stationId: '263', type: Shapes.Circle, cx: '2097', cy: '1466', r: '5', fill: '#FFA8AF'},
-        { stationId: '17', type: Shapes.Circle, cx: '2049', cy: '1596', r: '5', fill: '#FFA8AF'},
-        { stationId: '253', type: Shapes.Circle, cx: '1983', cy: '1701', r: '5', fill: '#FFA8AF'},
-        { stationId: '252', type: Shapes.Circle, cx: '1945', cy: '1740', r: '5', fill: '#FFA8AF'},
-        { stationId: '68', type: Shapes.Circle, cx: '1887', cy: '1794', r: '5', fill: '#FFA8AF'},
-        { stationId: '251', type: Shapes.Circle, cx: '1804', cy: '1854', r: '5', fill: '#FFA8AF'},
-        { stationId: '250', type: Shapes.Circle, cx: '1714', cy: '1893', r: '5', fill: '#FFA8AF'},
-        { stationId: '249', type: Shapes.Circle, cx: '1541', cy: '1935', r: '5', fill: '#FFA8AF'},
-        { stationId: '248', type: Shapes.Circle, cx: '1314', cy: '1907', r: '5', fill: '#FFA8AF'},
-        { stationId: '247', type: Shapes.Circle, cx: '1137', cy: '1820', r: '5', fill: '#FFA8AF'},
-        { stationId: '103', type: Shapes.Circle, cx: '941', cy: '1594', r: '5', fill: '#FFA8AF'},
-        { stationId: '246', type: Shapes.Circle, cx: '877', cy: '1383', r: '5', fill: '#FFA8AF'},
-        { stationId: '245', type: Shapes.Circle, cx: '875', cy: '1292', r: '5', fill: '#FFA8AF'},
-        { stationId: '244', type: Shapes.Circle, cx: '886', cy: '1194', r: '5', fill: '#FFA8AF'},
-        { stationId: '243', type: Shapes.Circle, cx: '905', cy: '1119', r: '5', fill: '#FFA8AF'},
-        { stationId: '242', type: Shapes.Circle, cx: '923', cy: '1071', r: '5', fill: '#FFA8AF'},
-        { stationId: '8', type: Shapes.Circle, cx: '967', cy: '986', r: '5', fill: '#FFA8AF'},
-        { stationId: '289', type: Shapes.Circle, cx: '415', cy: '1082', r: '5', fill: '#FAA400'},
-        { stationId: '288', type: Shapes.Circle, cx: '415', cy: '1135', r: '5', fill: '#FAA400'},
-        { stationId: '287', type: Shapes.Circle, cx: '416', cy: '1185', r: '5', fill: '#FAA400'},
-        { stationId: '286', type: Shapes.Circle, cx: '416', cy: '1234', r: '5', fill: '#FAA400'},
-        { stationId: '285', type: Shapes.Circle, cx: '444', cy: '1286', r: '5', fill: '#FAA400'},
-        { stationId: '284', type: Shapes.Circle, cx: '499', cy: '1341', r: '5', fill: '#FAA400'},
-        { stationId: '90', type: Shapes.Circle, cx: '544', cy: '1386', r: '5', fill: '#FAA400'},
-        { stationId: '102', type: Shapes.Circle, cx: '809', cy: '1541', r: '5', fill: '#FAA400'},
-        { stationId: '282', type: Shapes.Circle, cx: '967', cy: '1383', r: '5', fill: '#FAA400'},
-        { stationId: '281', type: Shapes.Circle, cx: '1042', cy: '1308', r: '5', fill: '#FAA400'},
-        { stationId: '117', type: Shapes.Circle, cx: '1217', cy: '1133', r: '5', fill: '#FAA400'},
-        { stationId: '184', type: Shapes.Circle, cx: '1259', cy: '1009', r: '5', fill: '#FAA400'},
-        { stationId: '183', type: Shapes.Circle, cx: '1259', cy: '873', r: '5', fill: '#FAA400'},
-        { stationId: '204', type: Shapes.Circle, cx: '1259', cy: '766', r: '5', fill: '#FAA400'},
-        { stationId: '280', type: Shapes.Circle, cx: '1260', cy: '648', r: '5', fill: '#FAA400'},
-        { stationId: '279', type: Shapes.Circle, cx: '1260', cy: '599', r: '5', fill: '#FAA400'},
-        { stationId: '278', type: Shapes.Circle, cx: '1260', cy: '550', r: '5', fill: '#FAA400'},
-        { stationId: '277', type: Shapes.Circle, cx: '1260', cy: '501', r: '5', fill: '#FAA400'},
-        { stationId: '276', type: Shapes.Circle, cx: '1260', cy: '449', r: '5', fill: '#FAA400'},
-        { stationId: '275', type: Shapes.Circle, cx: '1260', cy: '399', r: '5', fill: '#FAA400'},
-        { stationId: '274', type: Shapes.Circle, cx: '1260', cy: '349', r: '5', fill: '#FAA400'},
-        { stationId: '273', type: Shapes.Circle, cx: '1260', cy: '299', r: '5', fill: '#FAA400'},
-        { stationId: '272', type: Shapes.Circle, cx: '1260', cy: '249', r: '5', fill: '#FAA400'},
-        { stationId: '271', type: Shapes.Circle, cx: '1260', cy: '197', r: '5', fill: '#FAA400'},
-        { stationId: '29', type: Shapes.Circle, cx: '1891', cy: '2737', r: '5', fill: '#EA4184'},
-        { stationId: '28', type: Shapes.Circle, cx: '1891', cy: '2680', r: '5', fill: '#EA4184'},
-        { stationId: '27', type: Shapes.Circle, cx: '1891', cy: '2620', r: '5', fill: '#EA4184'},
-        { stationId: '26', type: Shapes.Circle, cx: '1891', cy: '2560', r: '5', fill: '#EA4184'},
-        { stationId: '25', type: Shapes.Circle, cx: '1891', cy: '2500', r: '5', fill: '#EA4184'},
-        { stationId: '24', type: Shapes.Circle, cx: '1891', cy: '2440', r: '5', fill: '#EA4184'},
-        { stationId: '23', type: Shapes.Circle, cx: '1891', cy: '2380', r: '5', fill: '#EA4184'},
-        { stationId: '22', type: Shapes.Circle, cx: '1891', cy: '2320', r: '5', fill: '#EA4184'},
-        { stationId: '73', type: Shapes.Circle, cx: '1959', cy: '2224', r: '5', fill: '#EA4184'},
-        { stationId: '21', type: Shapes.Circle, cx: '2130', cy: '2179', r: '5', fill: '#EA4184'},
-        { stationId: '20', type: Shapes.Circle, cx: '2130', cy: '2060', r: '5', fill: '#EA4184'},
-        { stationId: '19', type: Shapes.Circle, cx: '2130', cy: '2001', r: '5', fill: '#EA4184'},
-        { stationId: '18', type: Shapes.Circle, cx: '2130', cy: '1934', r: '5', fill: '#EA4184'},
-        { stationId: '153', type: Shapes.Circle, cx: '2130', cy: '1656', r: '5', fill: '#EA4184'},
-        { stationId: '17', type: Shapes.Circle, cx: '2089', cy: '1596', r: '5', fill: '#EA4184'},
-        { stationId: '16', type: Shapes.Circle, cx: '2036', cy: '1542', r: '5', fill: '#EA4184'},
-        { stationId: '15', type: Shapes.Circle, cx: '1974', cy: '1481', r: '5', fill: '#EA4184'},
-        { stationId: '14', type: Shapes.Circle, cx: '1876', cy: '1384', r: '5', fill: '#EA4184'},
-        { stationId: '13', type: Shapes.Circle, cx: '1804', cy: '1161', r: '5', fill: '#EA4184'},
-        { stationId: '12', type: Shapes.Circle, cx: '1696', cy: '1053', r: '5', fill: '#EA4184'},
-        { stationId: '11', type: Shapes.Circle, cx: '1324', cy: '966', r: '5', fill: '#EA4184'},
-        { stationId: '10', type: Shapes.Circle, cx: '1216', cy: '966', r: '5', fill: '#EA4184'},
-        { stationId: '9', type: Shapes.Circle, cx: '1100', cy: '966', r: '5', fill: '#EA4184'},
-        { stationId: '8', type: Shapes.Circle, cx: '967', cy: '966', r: '5', fill: '#EA4184'},
-        { stationId: '7', type: Shapes.Circle, cx: '865', cy: '964', r: '5', fill: '#EA4184'},
-        { stationId: '142', type: Shapes.Circle, cx: '750', cy: '967', r: '5', fill: '#EA4184'},
-        { stationId: '6', type: Shapes.Circle, cx: '661', cy: '964', r: '5', fill: '#EA4184'},
-        { stationId: '95', type: Shapes.Circle, cx: '544', cy: '967', r: '5', fill: '#EA4184'},
-        { stationId: '5', type: Shapes.Circle, cx: '414', cy: '850', r: '5', fill: '#EA4184'},
-        { stationId: '4', type: Shapes.Circle, cx: '414', cy: '800', r: '5', fill: '#EA4184'},
-        { stationId: '3', type: Shapes.Circle, cx: '413', cy: '751', r: '5', fill: '#EA4184'},
-        { stationId: '2', type: Shapes.Circle, cx: '414', cy: '700', r: '5', fill: '#EA4184'},
-        { stationId: '1', type: Shapes.Circle, cx: '414', cy: '649', r: '5', fill: '#EA4184'},
-        { stationId: '0', type: Shapes.Circle, cx: '414', cy: '595', r: '5', fill: '#EA4184'},
-        { stationId: '71', type: Shapes.Circle, cx: '1874', cy: '2060', r: '5', fill: '#6AC9C8'},
-        { stationId: '223', type: Shapes.Circle, cx: '1808', cy: '2096', r: '5', fill: '#6AC9C8'},
-        { stationId: '224', type: Shapes.Circle, cx: '1690', cy: '2096', r: '5', fill: '#6AC9C8'}
-    ],
-    labels: [
-        { id: '0', type: Shapes.Text, labels: [ { x: 302, y: 606.336, name: 'Нахабино'} ] },
-        { id: '1', type: Shapes.Text, labels: [ { x: 292, y: 656.336, name: 'Аникеевка'} ] },
-        { id: '2', type: Shapes.Text, labels: [ { x: 313, y: 706.336, name: 'Опалиха'} ] },
-        { id: '3', type: Shapes.Text, labels: [ { x: 251, y: 756.336, name: 'Красногорская'} ] },
-        { id: '4', type: Shapes.Text, labels: [ { x: 306, y: 806.336, name: 'Павшино'} ] },
-        { id: '5', type: Shapes.Text, labels: [ { x: 303, y: 856.336, name: 'Пенягино'} ] },
-        { id: '6', type: Shapes.Text, labels: [ { x: 607, y: 997.336, name: 'Трикотажная'} ] },
-        { id: '7', type: Shapes.Text, labels: [ { x: 815, y: 924.336, name: 'Покровско'}, { x: 815, y: 947.336, name: 'Стрешнево'} ] },
-        { id: '8', type: Shapes.Text, labels: [ { x: 926, y: 1012.34, name: 'Стрешнево'} ] },
-        { id: '9', type: Shapes.Text, labels: [ { x: 1060, y: 924.336, name: 'Красный'}, { x: 1060, y: 947.336, name: 'Балтиец'} ] },
-        { id: '10', type: Shapes.Text, labels: [ { x: 1155, y: 944.336, name: 'Гражданская'} ] },
-        { id: '11', type: Shapes.Text, labels: [ { x: 1316, y: 944.336, name: 'Дмитровская'} ] },
-        { id: '12', type: Shapes.Text, labels: [ { x: 1688, y: 1028.34, name: 'Рижская'} ] },
-        { id: '13', type: Shapes.Text, labels: [ { x: 1824, y: 1161.34, name: 'Каланчёвская'} ] },
-        { id: '14', type: Shapes.Text, labels: [ { x: 1891, y: 1371.34, name: 'Курская'} ] },
-        { id: '15', type: Shapes.Text, labels: [ { x: 1795, y: 1476.34, name: 'Москва-Товарная'} ] },
-        { id: '16', type: Shapes.Text, labels: [ { x: 2050, y: 1547.34, name: 'Калитники'} ] },
-        { id: '17', type: Shapes.Text, labels: [ { x: 2110, y: 1603.34, name: 'Новохохловская'} ] },
-        { id: '18', type: Shapes.Text, labels: [ { x: 2019, y: 1941.34, name: 'Кубанская'} ] },
-        { id: '19', type: Shapes.Text, labels: [ { x: 2066, y: 2004.34, name: 'Депо'} ] },
-        { id: '20', type: Shapes.Text, labels: [ { x: 2034, y: 2064.34, name: 'Перерва'} ] },
-        { id: '21', type: Shapes.Text, labels: [ { x: 1986, y: 2183.34, name: 'Москворечье'} ] },
-        { id: '22', type: Shapes.Text, labels: [ { x: 1912, y: 2328.34, name: 'Покровское'} ] },
-        { id: '23', type: Shapes.Text, labels: [ { x: 1912, y: 2384.34, name: 'КрасныйСтроитель'} ] },
-        { id: '24', type: Shapes.Text, labels: [ { x: 1911, y: 2446.34, name: 'Битца'} ] },
-        { id: '25', type: Shapes.Text, labels: [ { x: 1911, y: 2506.34, name: 'Бутово'} ] },
-        { id: '26', type: Shapes.Text, labels: [ { x: 1911, y: 2566.34, name: 'Щербинка'} ] },
-        { id: '27', type: Shapes.Text, labels: [ { x: 1911, y: 2626.34, name: 'Остафьево'} ] },
-        { id: '28', type: Shapes.Text, labels: [ { x: 1911, y: 2686.34, name: 'Силикатная'} ] },
-        { id: '29', type: Shapes.Text, labels: [ { x: 1911, y: 2741.34, name: 'Подольск'} ] },
-        { id: '30', type: Shapes.Text, labels: [ { x: 1915, y: 833.336, name: 'Бульвар'}, { x: 1915, y: 856.336, name: 'Рокоссовского'} ] },
-        { id: '31', type: Shapes.Text, labels: [ { x: 1810, y: 963.336, name: 'Черкизовская'} ] },
-        { id: '32', type: Shapes.Text, labels: [ { x: 1938, y: 1011.34, name: 'Преображенская'}, { x: 1938, y: 1034.34, name: 'площадь'} ] },
-        { id: '33', type: Shapes.Text, labels: [ { x: 1892, y: 1062.34, name: 'Сокольники'} ] },
-        { id: '34', type: Shapes.Text, labels: [ { x: 1845, y: 1109.34, name: 'Красносельская'} ] },
-        { id: '35', type: Shapes.Text, labels: [ { x: 1770, y: 1202.34, name: 'Комсомольская'} ] },
-        { id: '36', type: Shapes.Text, labels: [ { x: 1717, y: 1244.34, name: 'Красные Ворота'} ] },
-        { id: '37', type: Shapes.Text, labels: [ { x: 1507, y: 1267.34, name: 'Чистые пруды'} ] },
-        { id: '38', type: Shapes.Text, labels: [ { x: 1573, y: 1387.34, name: 'Лубянка'} ] },
-        { id: '39', type: Shapes.Text, labels: [ { x: 1521, y: 1436.34, name: 'Охотный Ряд'} ] },
-        { id: '40', type: Shapes.Text, labels: [ { x: 1392, y: 1568.34, name: 'Библиотека'}, { x: 1392, y: 1591.34, name: 'имени Ленина'} ] },
-        { id: '41', type: Shapes.Text, labels: [ { x: 1323, y: 1640.34, name: 'Кропоткинская'} ] },
-        { id: '42', type: Shapes.Text, labels: [ { x: 1273, y: 1695.34, name: 'Парк культуры'} ] },
-        { id: '43', type: Shapes.Text, labels: [ { x: 1205, y: 1755.34, name: 'Фрунзенская'} ] },
-        { id: '44', type: Shapes.Text, labels: [ { x: 1164, y: 1800.34, name: 'Спортивная'} ] },
-        { id: '45', type: Shapes.Text, labels: [ { x: 1092, y: 1868.34, name: 'Воробьёвы горы'} ] },
-        { id: '46', type: Shapes.Text, labels: [ { x: 1061, y: 1955.34, name: 'Университет'} ] },
-        { id: '47', type: Shapes.Text, labels: [ { x: 1061, y: 2025.34, name: 'Проспект Вернадского'} ] },
-        { id: '48', type: Shapes.Text, labels: [ { x: 1061, y: 2095.34, name: 'Юго-Западная'} ] },
-        { id: '49', type: Shapes.Text, labels: [ { x: 1061, y: 2165.34, name: 'Тропарёво'} ] },
-        { id: '50', type: Shapes.Text, labels: [ { x: 1061, y: 2235.34, name: 'Румянцево'} ] },
-        { id: '51', type: Shapes.Text, labels: [ { x: 1061, y: 2305.34, name: 'Саларьево'} ] },
-        { id: '52', type: Shapes.Text, labels: [ { x: 1087, y: 2366.34, name: 'Филатов Луг'} ] },
-        { id: '53', type: Shapes.Text, labels: [ { x: 1137, y: 2416.34, name: 'Прокшино'} ] },
-        { id: '54', type: Shapes.Text, labels: [ { x: 1187, y: 2466.34, name: 'Ольховая'} ] },
-        { id: '55', type: Shapes.Text, labels: [ { x: 1237, y: 2516.34, name: 'Коммунарка'} ] },
-        { id: '56', type: Shapes.Text, labels: [ { x: 907, y: 677.336, name: 'Ховрино'} ] },
-        { id: '57', type: Shapes.Text, labels: [ { x: 907, y: 722.336, name: 'Беломорская'} ] },
-        { id: '58', type: Shapes.Text, labels: [ { x: 907, y: 768.336, name: 'Речной вокзал'} ] },
-        { id: '59', type: Shapes.Text, labels: [ { x: 907, y: 815.336, name: 'Водный стадион'} ] },
-        { id: '60', type: Shapes.Text, labels: [ { x: 850, y: 899.336, name: 'Войковская'} ] },
-        { id: '61', type: Shapes.Text, labels: [ { x: 1076, y: 1014.34, name: 'Сокол'} ] },
-        { id: '62', type: Shapes.Text, labels: [ { x: 1116, y: 1049.34, name: 'Аэропорт'} ] },
-        { id: '63', type: Shapes.Text, labels: [ { x: 1165, y: 1095.34, name: 'Динамо'} ] },
-        { id: '64', type: Shapes.Text, labels: [ { x: 1315, y: 1252.34, name: 'Маяковская'} ] },
-        { id: '65', type: Shapes.Text, labels: [ { x: 1376, y: 1310.34, name: 'Тверская'} ] },
-        { id: '66', type: Shapes.Text, labels: [ { x: 1521, y: 1460.34, name: 'Театральная'} ] },
-        { id: '67', type: Shapes.Text, labels: [ { x: 1610, y: 1561.34, name: 'Новокузнецкая'} ] },
-        { id: '68', type: Shapes.Text, labels: [ { x: 1817, y: 1775.34, name: 'Автозаводская'} ] },
-        { id: '69', type: Shapes.Text, labels: [ { x: 1905, y: 1872.34, name: 'Технопарк'} ] },
-        { id: '70', type: Shapes.Text, labels: [ { x: 1905, y: 1964.34, name: 'Коломенская'} ] },
-        { id: '71', type: Shapes.Text, labels: [ { x: 1909, y: 2048.34, name: 'Каширская'} ] },
-        { id: '72', type: Shapes.Text, labels: [ { x: 1741, y: 2156.34, name: 'Кантемировская'} ] },
-        { id: '73', type: Shapes.Text, labels: [ { x: 1835, y: 2200.34, name: 'Царицыно'} ] },
-        { id: '74', type: Shapes.Text, labels: [ { x: 2062, y: 2274.34, name: 'Орехово'} ] },
-        { id: '75', type: Shapes.Text, labels: [ { x: 2025, y: 2348.34, name: 'Домодедовская'} ] },
-        { id: '76', type: Shapes.Text, labels: [ { x: 2203, y: 2360.34, name: 'Красногвардейская'} ] },
-        { id: '77', type: Shapes.Text, labels: [ { x: 2357, y: 2327.34, name: 'Алма-Атинская'} ] },
-        { id: '78', type: Shapes.Text, labels: [ { x: 2248, y: 933.336, name: 'Щёлковская'} ] },
-        { id: '79', type: Shapes.Text, labels: [ { x: 2248, y: 1012.34, name: 'Первомайская'} ] },
-        { id: '80', type: Shapes.Text, labels: [ { x: 2210, y: 1102.34, name: 'Измайловская'} ] },
-        { id: '81', type: Shapes.Text, labels: [ { x: 2156, y: 1160.34, name: 'Партизанская'} ] },
-        { id: '82', type: Shapes.Text, labels: [ { x: 1930, y: 1219.34, name: 'Семёновская'} ] },
-        { id: '83', type: Shapes.Text, labels: [ { x: 1826, y: 1273.34, name: 'Электрозаводская'} ] },
-        { id: '84', type: Shapes.Text, labels: [ { x: 1827, y: 1323.34, name: 'Бауманская'} ] },
-        { id: '85', type: Shapes.Text, labels: [ { x: 1514, y: 1500.34, name: 'Площадь Революции'} ] },
-        { id: '86', type: Shapes.Text, labels: [ { x: 1243, y: 1530.34, name: 'Арбатская'} ] },
-        { id: '87', type: Shapes.Text, labels: [ { x: 1171, y: 1559.34, name: 'Смоленская'} ] },
-        { id: '88', type: Shapes.Text, labels: [ { x: 1016, y: 1531.34, name: 'Киевская'} ] },
-        { id: '89', type: Shapes.Text, labels: [ { x: 399, y: 1491.34, name: 'Славянский бульвар'} ] },
-        { id: '90', type: Shapes.Text, labels: [ { x: 592, y: 1338.34, name: 'Кунцевская'} ] },
-        { id: '91', type: Shapes.Text, labels: [ { x: 592, y: 1256.34, name: 'Молодёжная'} ] },
-        { id: '92', type: Shapes.Text, labels: [ { x: 592, y: 1186.34, name: 'Крылатское'} ] },
-        { id: '93', type: Shapes.Text, labels: [ { x: 592, y: 1116.34, name: 'Строгино'} ] },
-        { id: '94', type: Shapes.Text, labels: [ { x: 592, y: 1046.34, name: 'Мякинино'} ] },
-        { id: '95', type: Shapes.Text, labels: [ { x: 403, y: 947.336, name: 'Волоколамская'} ] },
-        { id: '96', type: Shapes.Text, labels: [ { x: 478, y: 852.336, name: 'Митино'} ] },
-        { id: '97', type: Shapes.Text, labels: [ { x: 449.598, y: 774.336, name: 'Пятницкое'}, { x: 492.879, y: 797.336, name: 'шоссе'} ] },
-        { id: '99', type: Shapes.Text, labels: [ { x: 525, y: 1438.34, name: 'Пионерская'} ] },
-        { id: '100', type: Shapes.Text, labels: [ { x: 716, y: 1461.34, name: 'Филёвский парк'} ] },
-        { id: '101', type: Shapes.Text, labels: [ { x: 582, y: 1540.34, name: 'Багратионовская'} ] },
-        { id: '102', type: Shapes.Text, labels: [ { x: 825, y: 1563.34, name: 'Фили'} ] },
-        { id: '103', type: Shapes.Text, labels: [ { x: 936, y: 1632.34, name: 'Кутузовская'} ] },
-        { id: '104', type: Shapes.Text, labels: [ { x: 855, y: 1534.34, name: 'Студенческая'} ] },
-        { id: '105', type: Shapes.Text, labels: [ { x: 1171, y: 1456.34, name: 'Смоленская'} ] },
-        { id: '106', type: Shapes.Text, labels: [ { x: 1272, y: 1507.34, name: 'Арбатская'} ] },
-        { id: '107', type: Shapes.Text, labels: [ { x: 1387, y: 1532.34, name: 'Александровский сад'} ] },
-        { id: '108', type: Shapes.Text, labels: [ { x: 985, y: 1466.34, name: 'Выставочная'} ] },
-        { id: '109', type: Shapes.Text, labels: [ { x: 714, y: 1361.34, name: 'Международная'} ] },
-        { id: '111', type: Shapes.Text, labels: [ { x: 1429, y: 1778.34, name: 'Октябрьская'} ] },
-        { id: '112', type: Shapes.Text, labels: [ { x: 1586, y: 1809.34, name: 'Добрынинская'} ] },
-        { id: '113', type: Shapes.Text, labels: [ { x: 1608, y: 1702.34, name: 'Павелецкая'} ] },
-        { id: '114', type: Shapes.Text, labels: [ { x: 1780, y: 1574.34, name: 'Таганская'} ] },
-        { id: '116', type: Shapes.Text, labels: [ { x: 1281, y: 1069.34, name: 'Новослободская'} ] },
-        { id: '117', type: Shapes.Text, labels: [ { x: 1240, y: 1166.34, name: 'Белорусская'} ] },
-        { id: '118', type: Shapes.Text, labels: [ { x: 1104, y: 1372.34, name: 'Краснопресненская'} ] },
-        { id: '119', type: Shapes.Text, labels: [ { x: 1689, y: 563.336, name: 'Медведково'} ] },
-        { id: '120', type: Shapes.Text, labels: [ { x: 1689, y: 607.336, name: 'Бабушкинская'} ] },
-        { id: '121', type: Shapes.Text, labels: [ { x: 1689, y: 655.336, name: 'Свиблово'} ] },
-        { id: '122', type: Shapes.Text, labels: [ { x: 1689, y: 697.336, name: 'Ботанический сад'} ] },
-        { id: '123', type: Shapes.Text, labels: [ { x: 1689, y: 833.336, name: 'ВДНХ'} ] },
-        { id: '124', type: Shapes.Text, labels: [ { x: 1689, y: 933.336, name: 'Алексеевская'} ] },
-        { id: '125', type: Shapes.Text, labels: [ { x: 1508, y: 1126.34, name: 'Проспект Мира'} ] },
-        { id: '126', type: Shapes.Text, labels: [ { x: 1531, y: 1201.34, name: 'Сухаревская'} ] },
-        { id: '127', type: Shapes.Text, labels: [ { x: 1684, y: 1293.34, name: 'Тургеневская'} ] },
-        { id: '128', type: Shapes.Text, labels: [ { x: 1683, y: 1430.34, name: 'Китай-город'} ] },
-        { id: '129', type: Shapes.Text, labels: [ { x: 1368, y: 1840.34, name: 'Шаболовская'} ] },
-        { id: '130', type: Shapes.Text, labels: [ { x: 1341, y: 1885.34, name: 'Ленинский проспект'} ] },
-        { id: '131', type: Shapes.Text, labels: [ { x: 1328, y: 1959.34, name: 'Академическая'} ] },
-        { id: '132', type: Shapes.Text, labels: [ { x: 1328, y: 2005.34, name: 'Профсоюзная'} ] },
-        { id: '133', type: Shapes.Text, labels: [ { x: 1327, y: 2053.34, name: 'Новые Черёмушки'} ] },
-        { id: '134', type: Shapes.Text, labels: [ { x: 1328, y: 2105.34, name: 'Калужская'} ] },
-        { id: '135', type: Shapes.Text, labels: [ { x: 1327, y: 2154.34, name: 'Беляево'} ] },
-        { id: '136', type: Shapes.Text, labels: [ { x: 1328, y: 2206.34, name: 'Коньково'} ] },
-        { id: '137', type: Shapes.Text, labels: [ { x: 1355, y: 2249.34, name: 'Тёплый Стан'} ] },
-        { id: '138', type: Shapes.Text, labels: [ { x: 1393, y: 2286.34, name: 'Ясенево'} ] },
-        { id: '139', type: Shapes.Text, labels: [ { x: 1428, y: 2316.34, name: 'Новоясеневская'} ] },
-        { id: '140', type: Shapes.Text, labels: [ { x: 709, y: 777.336, name: 'Планерная'} ] },
-        { id: '141', type: Shapes.Text, labels: [ { x: 709, y: 856.336, name: 'Сходненская'} ] },
-        { id: '142', type: Shapes.Text, labels: [ { x: 629, y: 940.336, name: 'Тушинская'} ] },
-        { id: '143', type: Shapes.Text, labels: [ { x: 729, y: 1019.34, name: 'Спартак'} ] },
-        { id: '144', type: Shapes.Text, labels: [ { x: 738, y: 1053.34, name: 'Щукинская'} ] },
-        { id: '145', type: Shapes.Text, labels: [ { x: 746.828, y: 1091.34, name: 'Октябрьское'}, { x: 820.305, y: 1114.34, name: 'Поле'} ] },
-        { id: '146', type: Shapes.Text, labels: [ { x: 955, y: 1195.34, name: 'Полежаевская'} ] },
-        { id: '147', type: Shapes.Text, labels: [ { x: 996, y: 1344.34, name: 'Улица'}, { x: 996, y: 1367.34, name: '1905 года'} ] },
-        { id: '148', type: Shapes.Text, labels: [ { x: 1166, y: 1322.34, name: 'Баррикадная'} ] },
-        { id: '149', type: Shapes.Text, labels: [ { x: 1345, y: 1375.34, name: 'Пушкинская'} ] },
-        { id: '150', type: Shapes.Text, labels: [ { x: 1438, y: 1328.34, name: 'Кузнецкий Мост'} ] },
-        { id: '151', type: Shapes.Text, labels: [ { x: 1799, y: 1672.34, name: 'Пролетарская'} ] },
-        { id: '152', type: Shapes.Text, labels: [ { x: 1960.18, y: 1670.34, name: 'Волгоградский'}, { x: 2014.79, y: 1693.34, name: 'проспект'} ] },
-        { id: '153', type: Shapes.Text, labels: [ { x: 2147, y: 1669.34, name: 'Текстильщики'} ] },
-        { id: '154', type: Shapes.Text, labels: [ { x: 2115, y: 1703.34, name: 'Кузьминки'} ] },
-        { id: '155', type: Shapes.Text, labels: [ { x: 2317, y: 1766.34, name: 'Рязанский проспект'} ] },
-        { id: '156', type: Shapes.Text, labels: [ { x: 2372, y: 1821.34, name: 'Выхино'} ] },
-        { id: '157', type: Shapes.Text, labels: [ { x: 2401, y: 1851.34, name: 'Лермонтовский'}, { x: 2401, y: 1874.34, name: 'проспект'} ] },
-        { id: '158', type: Shapes.Text, labels: [ { x: 2398, y: 1968.34, name: 'Жулебино'} ] },
-        { id: '159', type: Shapes.Text, labels: [ { x: 2398, y: 2038.34, name: 'Котельники'} ] },
-        { id: '160', type: Shapes.Text, labels: [ { x: 2405, y: 1303.34, name: 'Новокосино'} ] },
-        { id: '161', type: Shapes.Text, labels: [ { x: 2315, y: 1349.34, name: 'Новогиреево'} ] },
-        { id: '162', type: Shapes.Text, labels: [ { x: 2230, y: 1304.34, name: 'Перово'} ] },
-        { id: '163', type: Shapes.Text, labels: [ { x: 2056, y: 1439.34, name: 'Авиамоторная'} ] },
-        { id: '164', type: Shapes.Text, labels: [ { x: 1966, y: 1522.34, name: 'Площадь Ильича'} ] },
-        { id: '165', type: Shapes.Text, labels: [ { x: 1698, y: 1647.34, name: 'Марксистская'} ] },
-        { id: '166', type: Shapes.Text, labels: [ { x: 1495, y: 1624.34, name: 'Третьяковская'} ] },
-        { id: '167', type: Shapes.Text, labels: [ { x: 652, y: 1672.34, name: 'Парк Победы'} ] },
-        { id: '168', type: Shapes.Text, labels: [ { x: 771, y: 1726.34, name: 'Минская'} ] },
-        { id: '169', type: Shapes.Text, labels: [ { x: 769, y: 1788.34, name: 'Ломоносовский'}, { x: 769, y: 1811.34, name: 'проспект'} ] },
-        { id: '170', type: Shapes.Text, labels: [ { x: 769, y: 1851.98, name: 'Раменки'} ] },
-        { id: '171', type: Shapes.Text, labels: [ { x: 769, y: 1901.63, name: 'Мичуринскийпроспект'} ] },
-        { id: '172', type: Shapes.Text, labels: [ { x: 769, y: 1951.27, name: 'Озёрная'} ] },
-        { id: '173', type: Shapes.Text, labels: [ { x: 769, y: 2000.92, name: 'Говорово'} ] },
-        { id: '174', type: Shapes.Text, labels: [ { x: 769, y: 2050.56, name: 'Солнцево'} ] },
-        { id: '175', type: Shapes.Text, labels: [ { x: 769, y: 2100.21, name: 'Боровское шоссе'} ] },
-        { id: '176', type: Shapes.Text, labels: [ { x: 769, y: 2149.85, name: 'Новопеределкино'} ] },
-        { id: '177', type: Shapes.Text, labels: [ { x: 769, y: 2199.5, name: 'Рассказовка'} ] },
-        { id: '178', type: Shapes.Text, labels: [ { x: 1321, y: 555.336, name: 'Алтуфьево'} ] },
-        { id: '179', type: Shapes.Text, labels: [ { x: 1321, y: 605.336, name: 'Бибирево'} ] },
-        { id: '180', type: Shapes.Text, labels: [ { x: 1321, y: 655.336, name: 'Отрадное'} ] },
-        { id: '181', type: Shapes.Text, labels: [ { x: 1316, y: 721.336, name: 'Владыкино'} ] },
-        { id: '182', type: Shapes.Text, labels: [ { x: 1316, y: 781.336, name: 'Петровско-Разумовская'} ] },
-        { id: '183', type: Shapes.Text, labels: [ { x: 1314, y: 880.336, name: 'Тимирязевская'} ] },
-        { id: '184', type: Shapes.Text, labels: [ { x: 1329, y: 999.336, name: 'Савёловская'} ] },
-        { id: '185', type: Shapes.Text, labels: [ { x: 1306, y: 1125.34, name: 'Менделеевская'} ] },
-        { id: '186', type: Shapes.Text, labels: [ { x: 1376, y: 1184.34, name: 'Цветной'}, { x: 1376, y: 1207.34, name: 'бульвар'} ] },
-        { id: '187', type: Shapes.Text, labels: [ { x: 1243, y: 1306.34, name: 'Чеховская'} ] },
-        { id: '188', type: Shapes.Text, labels: [ { x: 1240, y: 1584.34, name: 'Боровицкая'} ] },
-        { id: '189', type: Shapes.Text, labels: [ { x: 1517, y: 1708.34, name: 'Полянка'} ] },
-        { id: '190', type: Shapes.Text, labels: [ { x: 1558, y: 1757.34, name: 'Серпуховская'} ] },
-        { id: '191', type: Shapes.Text, labels: [ { x: 1541, y: 1859.34, name: 'Тульская'} ] },
-        { id: '192', type: Shapes.Text, labels: [ { x: 1688, y: 1948.34, name: 'Нагатинская'} ] },
-        { id: '193', type: Shapes.Text, labels: [ { x: 1684, y: 2005.34, name: 'Нагорная'} ] },
-        { id: '194', type: Shapes.Text, labels: [ { x: 1519.37, y: 2040.34, name: 'Нахимовский'}, { x: 1560.79, y: 2063.34, name: 'проспект'} ] },
-        { id: '195', type: Shapes.Text, labels: [ { x: 1482, y: 2099.34, name: 'Севастопольская'} ] },
-        { id: '196', type: Shapes.Text, labels: [ { x: 1515, y: 2152.34, name: 'Чертановская'} ] },
-        { id: '197', type: Shapes.Text, labels: [ { x: 1581, y: 2201.34, name: 'Южная'} ] },
-        { id: '198', type: Shapes.Text, labels: [ { x: 1553, y: 2252.34, name: 'Пражская'} ] },
-        { id: '199', type: Shapes.Text, labels: [ { x: 1689, y: 2306.34, name: 'Улица'}, { x: 1689, y: 2329.34, name: 'Академика Янгеля'} ] },
-        { id: '200', type: Shapes.Text, labels: [ { x: 1689, y: 2356.34, name: 'Аннино'} ] },
-        { id: '201', type: Shapes.Text, labels: [ { x: 1686, y: 2399.34, name: 'Бульвар'}, { x: 1686, y: 2422.34, name: 'Дмитрия Донского'} ] },
-        { id: '202', type: Shapes.Text, labels: [ { x: 940, y: 585.336, name: 'Селигерская'} ] },
-        { id: '203', type: Shapes.Text, labels: [ { x: 1036, y: 674.336, name: 'Верхние'}, { x: 1036, y: 697.336, name: 'Лихоборы'} ] },
-        { id: '204', type: Shapes.Text, labels: [ { x: 1126, y: 769.336, name: 'Окружная'} ] },
-        { id: '205', type: Shapes.Text, labels: [ { x: 1432, y: 848.336, name: 'Фонвизинская'} ] },
-        { id: '206', type: Shapes.Text, labels: [ { x: 1498, y: 914.336, name: 'Бутырская'} ] },
-        { id: '207', type: Shapes.Text, labels: [ { x: 1525, y: 996.336, name: 'Марьина Роща'} ] },
-        { id: '208', type: Shapes.Text, labels: [ { x: 1450, y: 1038.34, name: 'Достоевская'} ] },
-        { id: '209', type: Shapes.Text, labels: [ { x: 1515, y: 1170.34, name: 'Трубная'} ] },
-        { id: '210', type: Shapes.Text, labels: [ { x: 1642, y: 1343.34, name: 'Сретенский бульвар'} ] },
-        { id: '211', type: Shapes.Text, labels: [ { x: 1726, y: 1400.34, name: 'Чкаловская'} ] },
-        { id: '212', type: Shapes.Text, labels: [ { x: 1838, y: 1511.34, name: 'Римская'} ] },
-        { id: '213', type: Shapes.Text, labels: [ { x: 1901, y: 1577.34, name: 'Крестьянская'}, { x: 1901, y: 1600.34, name: 'Застава'} ] },
-        { id: '214', type: Shapes.Text, labels: [ { x: 2037, y: 1779.34, name: 'Кожуховская'} ] },
-        { id: '215', type: Shapes.Text, labels: [ { x: 2114, y: 1856.34, name: 'Печатники'} ] },
-        { id: '216', type: Shapes.Text, labels: [ { x: 2194, y: 1936.34, name: 'Волжская'} ] },
-        { id: '217', type: Shapes.Text, labels: [ { x: 2230, y: 2005.34, name: 'Люблино'} ] },
-        { id: '218', type: Shapes.Text, labels: [ { x: 2230, y: 2067.34, name: 'Братиславская'} ] },
-        { id: '219', type: Shapes.Text, labels: [ { x: 2230, y: 2126.34, name: 'Марьино'} ] },
-        { id: '220', type: Shapes.Text, labels: [ { x: 2230, y: 2186.34, name: 'Борисово'} ] },
-        { id: '221', type: Shapes.Text, labels: [ { x: 2230, y: 2246.34, name: 'Шипиловская'} ] },
-        { id: '222', type: Shapes.Text, labels: [ { x: 2230, y: 2302.34, name: 'Зябликово'} ] },
-        { id: '223', type: Shapes.Text, labels: [ { x: 1800, y: 2123.34, name: 'Варшавская'} ] },
-        { id: '224', type: Shapes.Text, labels: [ { x: 1685, y: 2123.34, name: 'Каховская'} ] },
-        { id: '225', type: Shapes.Text, labels: [ { x: 984, y: 1442.34, name: 'Деловой центр'} ] },
-        { id: '226', type: Shapes.Text, labels: [ { x: 909, y: 1286.34, name: 'Шелепиха'} ] },
-        { id: '227', type: Shapes.Text, labels: [ { x: 956, y: 1234.34, name: 'Хорошёвская'} ] },
-        { id: '228', type: Shapes.Text, labels: [ { x: 956, y: 1234.34, name: 'Хорошёвская'} ] },
-        { id: '229', type: Shapes.Text, labels: [ { x: 956, y: 1234.34, name: 'Хорошёвская'} ] },
-        { id: '230', type: Shapes.Text, labels: [ { x: 971, y: 1109.34, name: 'ЦСКА'} ] },
-        { id: '231', type: Shapes.Text, labels: [ { x: 1048.21, y: 1152.34, name: 'Петровский'}, { x: 1116.55, y: 1175.34, name: 'парк'} ] },
-        { id: '232', type: Shapes.Text, labels: [ { x: 1269, y: 2366.34, name: 'Битцевский парк'} ] },
-        { id: '233', type: Shapes.Text, labels: [ { x: 1492, y: 2366.34, name: 'Лесопарковая'} ] },
-        { id: '234', type: Shapes.Text, labels: [ { x: 1570.27, y: 2392.34, name: 'Улица'}, { x: 1451.05, y: 2415.34, name: 'Старокачаловская'} ] },
-        { id: '235', type: Shapes.Text, labels: [ { x: 1570.27, y: 2461.34, name: 'Улица'}, { x: 1494.6, y: 2484.34, name: 'Скобелевская'} ] },
-        { id: '236', type: Shapes.Text, labels: [ { x: 1550.36, y: 2530.34, name: 'Бульвар'}, { x: 1444.05, y: 2553.34, name: 'Адмирала Ушакова'} ] },
-        { id: '237', type: Shapes.Text, labels: [ { x: 1570.27, y: 2601.34, name: 'Улица'}, { x: 1530.01, y: 2624.34, name: 'Горчакова'} ] },
-        { id: '238', type: Shapes.Text, labels: [ { x: 1528.16, y: 2659.34, name: 'Бунинская'}, { x: 1570.07, y: 2682.34, name: 'Аллея'} ] },
-        { id: '239', type: Shapes.Text, labels: [ { x: 1155, y: 819.336, name: 'Лихоборы'} ] },
-        { id: '240', type: Shapes.Text, labels: [ { x: 1093, y: 871.336, name: 'Коптево'} ] },
-        { id: '241', type: Shapes.Text, labels: [ { x: 1005, y: 896.336, name: 'Балтийская'} ] },
-        { id: '242', type: Shapes.Text, labels: [ { x: 940, y: 1076.34, name: 'Панфиловская'} ] },
-        { id: '243', type: Shapes.Text, labels: [ { x: 920, y: 1139.34, name: 'Зорге'} ] },
-        { id: '244', type: Shapes.Text, labels: [ { x: 774, y: 1198.34, name: 'Хорошёво'} ] },
-        { id: '245', type: Shapes.Text, labels: [ { x: 909, y: 1286.34, name: 'Шелепиха'} ] },
-        { id: '246', type: Shapes.Text, labels: [ { x: 747, y: 1418.34, name: 'Деловой центр'} ] },
-        { id: '247', type: Shapes.Text, labels: [ { x: 1164, y: 1830.34, name: 'Лужники'} ] },
-        { id: '248', type: Shapes.Text, labels: [ { x: 1341, y: 1914.34, name: 'Площадь Гагарина'} ] },
-        { id: '249', type: Shapes.Text, labels: [ { x: 1522, y: 1966.34, name: 'Крымская'} ] },
-        { id: '250', type: Shapes.Text, labels: [ { x: 1704, y: 1845.34, name: 'Верхние'}, { x: 1704, y: 1868.34, name: 'Котлы'} ] },
-        { id: '251', type: Shapes.Text, labels: [ { x: 1814, y: 1877.34, name: 'ЗИЛ'} ] },
-        { id: '252', type: Shapes.Text, labels: [ { x: 1847, y: 1725.34, name: 'Дубровка'} ] },
-        { id: '253', type: Shapes.Text, labels: [ { x: 1990, y: 1725.34, name: 'Угрешская'} ] },
-        { id: '254', type: Shapes.Text, labels: [ { x: 2124, y: 1411.34, name: 'Андроновка'} ] },
-        { id: '255', type: Shapes.Text, labels: [ { x: 2135, y: 1353.34, name: 'Шоссе'}, { x: 2135, y: 1376.34, name: 'Энтузиастов'} ] },
-        { id: '256', type: Shapes.Text, labels: [ { x: 2128, y: 1252.34, name: 'Соколиная гора'} ] },
-        { id: '257', type: Shapes.Text, labels: [ { x: 1973, y: 1157.34, name: 'Измайлово'} ] },
-        { id: '258', type: Shapes.Text, labels: [ { x: 1992, y: 925.336, name: 'Локомотив'} ] },
-        { id: '259', type: Shapes.Text, labels: [ { x: 1853, y: 785.336, name: 'Белокаменная'} ] },
-        { id: '260', type: Shapes.Text, labels: [ { x: 1790, y: 752.336, name: 'Ростокино'} ] },
-        { id: '261', type: Shapes.Text, labels: [ { x: 2006, y: 1368.34, name: 'Лефортово'} ] },
-        { id: '262', type: Shapes.Text, labels: [ { x: 2056, y: 1439.34, name: 'Авиамоторная'} ] },
-        { id: '263', type: Shapes.Text, labels: [ { x: 2114, y: 1484.34, name: 'Нижегородская'} ] },
-        { id: '264', type: Shapes.Text, labels: [ { x: 2197, y: 1576.34, name: 'Стахановская'} ] },
-        { id: '265', type: Shapes.Text, labels: [ { x: 2281, y: 1703.34, name: 'Окская'} ] },
-        { id: '266', type: Shapes.Text, labels: [ { x: 2128, y: 1822.34, name: 'Юго-Восточная'} ] },
-        { id: '267', type: Shapes.Text, labels: [ { x: 2401, y: 1911.34, name: 'Косино'} ] },
-        { id: '268', type: Shapes.Text, labels: [ { x: 2578, y: 1917.34, name: 'Улица'}, { x: 2578, y: 1940.34, name: 'Дмитриевского'} ] },
-        { id: '269', type: Shapes.Text, labels: [ { x: 2578, y: 1983.34, name: 'Лухмановская'} ] },
-        { id: '270', type: Shapes.Text, labels: [ { x: 2578, y: 2038.34, name: 'Некрасовка'} ] },
-        { id: '271', type: Shapes.Text, labels: [ { x: 1181, y: 207.336, name: 'Лобня'} ] },
-        { id: '272', type: Shapes.Text, labels: [ { x: 1077, y: 257.336, name: 'Шереметьевская'} ] },
-        { id: '273', type: Shapes.Text, labels: [ { x: 1126, y: 307.336, name: 'Хлебниково'} ] },
-        { id: '274', type: Shapes.Text, labels: [ { x: 1159, y: 357.336, name: 'Водники'} ] },
-        { id: '275', type: Shapes.Text, labels: [ { x: 1105, y: 407.336, name: 'Долгопрудная'} ] },
-        { id: '276', type: Shapes.Text, labels: [ { x: 1124, y: 457.336, name: 'Новодачная'} ] },
-        { id: '277', type: Shapes.Text, labels: [ { x: 1189, y: 508.336, name: 'Марк'} ] },
-        { id: '278', type: Shapes.Text, labels: [ { x: 1136, y: 557.336, name: 'Лианозово'} ] },
-        { id: '279', type: Shapes.Text, labels: [ { x: 1106, y: 605.336, name: 'Бескудниково'} ] },
-        { id: '280', type: Shapes.Text, labels: [ { x: 1150, y: 654.336, name: 'Дегунино'} ] },
-        { id: '281', type: Shapes.Text, labels: [ { x: 1034, y: 1279.34, name: 'Беговая'} ] },
-        { id: '282', type: Shapes.Text, labels: [ { x: 978, y: 1403.34, name: 'Тестовская'} ] },
-        { id: '284', type: Shapes.Text, labels: [ { x: 317, y: 1349.34, name: 'Рабочий Посёлок'} ] },
-        { id: '285', type: Shapes.Text, labels: [ { x: 361, y: 1293.34, name: 'Сетунь'} ] },
-        { id: '286', type: Shapes.Text, labels: [ { x: 279, y: 1239.34, name: 'Немчиновка'} ] },
-        { id: '287', type: Shapes.Text, labels: [ { x: 306, y: 1189.34, name: 'Сколково'} ] },
-        { id: '288', type: Shapes.Text, labels: [ { x: 319, y: 1139.34, name: 'Баковка'} ] },
-        { id: '289', type: Shapes.Text, labels: [ { x: 303, y: 1089.34, name: 'Одинцово'} ] },
+        {
+            labels: [
+                {
+                    x: 302,
+                    y: 606.336,
+                    name: 'Нахабино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Нахабино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '414',
+                    cy: '595',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 292,
+                    y: 656.336,
+                    name: 'Аникеевка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Аникеевка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '414',
+                    cy: '649',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 313,
+                    y: 706.336,
+                    name: 'Опалиха',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Опалиха',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '414',
+                    cy: '700',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 251,
+                    y: 756.336,
+                    name: 'Красногорская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Красногорская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '413',
+                    cy: '751',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 306,
+                    y: 806.336,
+                    name: 'Павшино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Павшино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '414',
+                    cy: '800',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 303,
+                    y: 856.336,
+                    name: 'Пенягино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Пенягино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '414',
+                    cy: '850',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 607,
+                    y: 997.336,
+                    name: 'Трикотажная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Трикотажная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '661',
+                    cy: '964',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 815,
+                    y: 924.336,
+                    name: 'Покровско',
+                    type: Shapes.Text
+                },
+                {
+                    x: 815,
+                    y: 947.336,
+                    name: 'Стрешнево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Покровско Стрешнево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '865',
+                    cy: '964',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 926,
+                    y: 1012.34,
+                    name: 'Стрешнево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Стрешнево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '967',
+                    cy: '986',
+                    r: '5',
+                    fill: '#FFA8AF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '967',
+                    cy: '966',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1060,
+                    y: 924.336,
+                    name: 'Красный',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1060,
+                    y: 947.336,
+                    name: 'Балтиец',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Красный Балтиец',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1100',
+                    cy: '966',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1155,
+                    y: 944.336,
+                    name: 'Гражданская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Гражданская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1216',
+                    cy: '966',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1316,
+                    y: 944.336,
+                    name: 'Дмитровская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Дмитровская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '939',
+                    r: '5',
+                    fill: '#A1A2A3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1324',
+                    cy: '966',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1688,
+                    y: 1028.34,
+                    name: 'Рижская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Рижская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1053',
+                    r: '5',
+                    fill: '#F58220'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1696',
+                    cy: '1053',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1824,
+                    y: 1161.34,
+                    name: 'Каланчёвская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Каланчёвская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1804',
+                    cy: '1161',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1891,
+                    y: 1371.34,
+                    name: 'Курская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Курская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1876',
+                    cy: '1405',
+                    r: '5',
+                    fill: '#0078BF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1856',
+                    cy: '1384',
+                    r: '5',
+                    fill: '#894E35'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1876',
+                    cy: '1384',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1795,
+                    y: 1476.34,
+                    name: 'Москва-Товарная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Москва-Товарная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1974',
+                    cy: '1481',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2050,
+                    y: 1547.34,
+                    name: 'Калитники',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Калитники',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2036',
+                    cy: '1542',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2110,
+                    y: 1603.34,
+                    name: 'Новохохловская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новохохловская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2049',
+                    cy: '1596',
+                    r: '5',
+                    fill: '#FFA8AF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '2089',
+                    cy: '1596',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2019,
+                    y: 1941.34,
+                    name: 'Кубанская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кубанская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2130',
+                    cy: '1934',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2066,
+                    y: 2004.34,
+                    name: 'Депо',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Депо',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2130',
+                    cy: '2001',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2034,
+                    y: 2064.34,
+                    name: 'Перерва',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Перерва',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2130',
+                    cy: '2060',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1986,
+                    y: 2183.34,
+                    name: 'Москворечье',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Москворечье',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2130',
+                    cy: '2179',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1912,
+                    y: 2328.34,
+                    name: 'Покровское',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Покровское',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2320',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1912,
+                    y: 2384.34,
+                    name: 'КрасныйСтроитель',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'КрасныйСтроитель',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2380',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1911,
+                    y: 2446.34,
+                    name: 'Битца',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Битца',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2440',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1911,
+                    y: 2506.34,
+                    name: 'Бутово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бутово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2500',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1911,
+                    y: 2566.34,
+                    name: 'Щербинка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Щербинка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2560',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1911,
+                    y: 2626.34,
+                    name: 'Остафьево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Остафьево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2620',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1911,
+                    y: 2686.34,
+                    name: 'Силикатная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Силикатная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2680',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1911,
+                    y: 2741.34,
+                    name: 'Подольск',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Подольск',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '2737',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1915,
+                    y: 833.336,
+                    name: 'Бульвар',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1915,
+                    y: 856.336,
+                    name: 'Рокоссовского',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бульвар Рокоссовского',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1886,
+                    cy: 869,
+                    r: 5,
+                    fill: '#DA2128'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1886',
+                    cy: '831',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1810,
+                    y: 963.336,
+                    name: 'Черкизовская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Черкизовская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1950,
+                    cy: 933,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1938,
+                    y: 1011.34,
+                    name: 'Преображенская',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1938,
+                    y: 1034.34,
+                    name: 'площадь',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Преображенская площадь',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1925,
+                    cy: 1005,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1892,
+                    y: 1062.34,
+                    name: 'Сокольники',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Сокольники',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1878,
+                    cy: 1052,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1845,
+                    y: 1109.34,
+                    name: 'Красносельская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Красносельская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1831,
+                    cy: 1099,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1770,
+                    y: 1202.34,
+                    name: 'Комсомольская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Комсомольская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1737,
+                    cy: 1193,
+                    r: 5,
+                    fill: '#DA2128'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1752',
+                    cy: '1178',
+                    r: '5',
+                    fill: '#894E35'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1717,
+                    y: 1244.34,
+                    name: 'Красные Ворота',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Красные Ворота',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1700,
+                    cy: 1232,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1507,
+                    y: 1267.34,
+                    name: 'Чистые пруды',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Чистые пруды',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1644,
+                    cy: 1288,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1573,
+                    y: 1387.34,
+                    name: 'Лубянка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лубянка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1572,
+                    cy: 1359,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1521,
+                    y: 1436.34,
+                    name: 'Охотный Ряд',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Охотный Ряд',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1502,
+                    cy: 1429,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1392,
+                    y: 1568.34,
+                    name: 'Библиотека',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1392,
+                    y: 1591.34,
+                    name: 'имени Ленина',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Библиотека имени Ленина',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1372,
+                    cy: 1558,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1323,
+                    y: 1640.34,
+                    name: 'Кропоткинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кропоткинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1301,
+                    cy: 1629,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1273,
+                    y: 1695.34,
+                    name: 'Парк культуры',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Парк культуры',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1252,
+                    cy: 1676,
+                    r: 5,
+                    fill: '#DA2128'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1237',
+                    cy: '1691',
+                    r: '5',
+                    fill: '#894E35'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1205,
+                    y: 1755.34,
+                    name: 'Фрунзенская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Фрунзенская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1185,
+                    cy: 1744,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1164,
+                    y: 1800.34,
+                    name: 'Спортивная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Спортивная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1137,
+                    cy: 1790,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1092,
+                    y: 1868.34,
+                    name: 'Воробьёвы горы',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Воробьёвы горы',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1068,
+                    cy: 1859,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1061,
+                    y: 1955.34,
+                    name: 'Университет',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Университет',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1044,
+                    cy: 1946,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1061,
+                    y: 2025.34,
+                    name: 'Проспект Вернадского',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Проспект Вернадского',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1044,
+                    cy: 2016,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1061,
+                    y: 2095.34,
+                    name: 'Юго-Западная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Юго-Западная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1044,
+                    cy: 2086,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1061,
+                    y: 2165.34,
+                    name: 'Тропарёво',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тропарёво',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1044,
+                    cy: 2156,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1061,
+                    y: 2235.34,
+                    name: 'Румянцево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Румянцево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1044,
+                    cy: 2226,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1061,
+                    y: 2305.34,
+                    name: 'Саларьево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Саларьево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1044,
+                    cy: 2296,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1087,
+                    y: 2366.34,
+                    name: 'Филатов Луг',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Филатов Луг',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1067,
+                    cy: 2356,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1137,
+                    y: 2416.34,
+                    name: 'Прокшино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Прокшино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1117,
+                    cy: 2407,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1187,
+                    y: 2466.34,
+                    name: 'Ольховая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Ольховая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1167,
+                    cy: 2457,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1237,
+                    y: 2516.34,
+                    name: 'Коммунарка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Коммунарка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: 1216,
+                    cy: 2507,
+                    r: 5,
+                    fill: '#DA2128'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 907,
+                    y: 677.336,
+                    name: 'Ховрино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Ховрино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '890',
+                    cy: '670',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 907,
+                    y: 722.336,
+                    name: 'Беломорская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Беломорская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '890',
+                    cy: '715',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 907,
+                    y: 768.336,
+                    name: 'Речной вокзал',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Речной вокзал',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '890',
+                    cy: '760',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 907,
+                    y: 815.336,
+                    name: 'Водный стадион',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Водный стадион',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '890',
+                    cy: '805',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 850,
+                    y: 899.336,
+                    name: 'Войковская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Войковская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '967',
+                    cy: '915',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1076,
+                    y: 1014.34,
+                    name: 'Сокол',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Сокол',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1062',
+                    cy: '1010',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1116,
+                    y: 1049.34,
+                    name: 'Аэропорт',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Аэропорт',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1099',
+                    cy: '1046',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1165,
+                    y: 1095.34,
+                    name: 'Динамо',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Динамо',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1138',
+                    cy: '1085',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1315,
+                    y: 1252.34,
+                    name: 'Маяковская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Маяковская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '1247',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1376,
+                    y: 1310.34,
+                    name: 'Тверская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тверская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1373',
+                    cy: '1325',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1521,
+                    y: 1460.34,
+                    name: 'Театральная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Театральная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1502',
+                    cy: '1453',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1610,
+                    y: 1561.34,
+                    name: 'Новокузнецкая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новокузнецкая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1629',
+                    cy: '1581',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1817,
+                    y: 1775.34,
+                    name: 'Автозаводская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Автозаводская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1847',
+                    cy: '1794',
+                    r: '5',
+                    fill: '#48B85E'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1887',
+                    cy: '1794',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1905,
+                    y: 1872.34,
+                    name: 'Технопарк',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Технопарк',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '1862',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1905,
+                    y: 1964.34,
+                    name: 'Коломенская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Коломенская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1891',
+                    cy: '1952',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1909,
+                    y: 2048.34,
+                    name: 'Каширская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Каширская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1892',
+                    cy: '2042',
+                    r: '5',
+                    fill: '#48B85E'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1874',
+                    cy: '2060',
+                    r: '5',
+                    fill: '#6AC9C8'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1741,
+                    y: 2156.34,
+                    name: 'Кантемировская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кантемировская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1917',
+                    cy: '2144',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1835,
+                    y: 2200.34,
+                    name: 'Царицыно',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Царицыно',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1959',
+                    cy: '2191',
+                    r: '5',
+                    fill: '#48B85E'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1959',
+                    cy: '2224',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2062,
+                    y: 2274.34,
+                    name: 'Орехово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Орехово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2045',
+                    cy: '2276',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2025,
+                    y: 2348.34,
+                    name: 'Домодедовская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Домодедовская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2113',
+                    cy: '2321',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2203,
+                    y: 2360.34,
+                    name: 'Красногвардейская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Красногвардейская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2217',
+                    cy: '2321',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2357,
+                    y: 2327.34,
+                    name: 'Алма-Атинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Алма-Атинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2340',
+                    cy: '2321',
+                    r: '5',
+                    fill: '#48B85E'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2248,
+                    y: 933.336,
+                    name: 'Щёлковская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Щёлковская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2231',
+                    cy: '926',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2248,
+                    y: 1012.34,
+                    name: 'Первомайская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Первомайская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2230',
+                    cy: '1005',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2210,
+                    y: 1102.34,
+                    name: 'Измайловская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Измайловская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2190',
+                    cy: '1089',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2156,
+                    y: 1160.34,
+                    name: 'Партизанская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Партизанская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2132',
+                    cy: '1150',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1930,
+                    y: 1219.34,
+                    name: 'Семёновская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Семёновская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2073',
+                    cy: '1207',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1826,
+                    y: 1273.34,
+                    name: 'Электрозаводская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Электрозаводская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2014',
+                    cy: '1264',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1827,
+                    y: 1323.34,
+                    name: 'Бауманская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бауманская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1955',
+                    cy: '1321',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1514,
+                    y: 1500.34,
+                    name: 'Площадь Революции',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Площадь Революции',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1502',
+                    cy: '1477',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1243,
+                    y: 1530.34,
+                    name: 'Арбатская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Арбатская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1352',
+                    cy: '1537',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1171,
+                    y: 1559.34,
+                    name: 'Смоленская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Смоленская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1203',
+                    cy: '1537',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1016,
+                    y: 1531.34,
+                    name: 'Киевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Киевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1124',
+                    cy: '1534',
+                    r: '5',
+                    fill: '#0078BF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1124',
+                    cy: '1514',
+                    r: '5',
+                    fill: '#00C1F3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1140',
+                    cy: '1525',
+                    r: '5',
+                    fill: '#894E35'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 399,
+                    y: 1491.34,
+                    name: 'Славянский бульвар',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Славянский бульвар',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '621',
+                    cy: '1484',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 592,
+                    y: 1338.34,
+                    name: 'Кунцевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кунцевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '1361',
+                    r: '5',
+                    fill: '#0078BF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '594',
+                    cy: '1361',
+                    r: '5',
+                    fill: '#00C1F3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '544',
+                    cy: '1386',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 592,
+                    y: 1256.34,
+                    name: 'Молодёжная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Молодёжная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '1246',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 592,
+                    y: 1186.34,
+                    name: 'Крылатское',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Крылатское',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '1176',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 592,
+                    y: 1116.34,
+                    name: 'Строгино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Строгино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '1106',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 592,
+                    y: 1046.34,
+                    name: 'Мякинино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Мякинино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '1036',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 403,
+                    y: 947.336,
+                    name: 'Волоколамская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Волоколамская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '941',
+                    r: '5',
+                    fill: '#0078BF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '544',
+                    cy: '967',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 478,
+                    y: 852.336,
+                    name: 'Митино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Митино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '846',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 449.598,
+                    y: 774.336,
+                    name: 'Пятницкое',
+                    type: Shapes.Text
+                },
+                {
+                    x: 492.879,
+                    y: 797.336,
+                    name: 'шоссе',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Пятницкое шоссе',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '569',
+                    cy: '768',
+                    r: '5',
+                    fill: '#0078BF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 525,
+                    y: 1438.34,
+                    name: 'Пионерская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Пионерская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '654',
+                    cy: '1420',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 716,
+                    y: 1461.34,
+                    name: 'Филёвский парк',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Филёвский парк',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '710',
+                    cy: '1476',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 582,
+                    y: 1540.34,
+                    name: 'Багратионовская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Багратионовская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '765',
+                    cy: '1530',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 825,
+                    y: 1563.34,
+                    name: 'Фили',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Фили',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '809',
+                    cy: '1576',
+                    r: '5',
+                    fill: '#00C1F3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '809',
+                    cy: '1541',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 936,
+                    y: 1632.34,
+                    name: 'Кутузовская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кутузовская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '924',
+                    cy: '1611',
+                    r: '5',
+                    fill: '#00C1F3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '941',
+                    cy: '1594',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 855,
+                    y: 1534.34,
+                    name: 'Студенческая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Студенческая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '987',
+                    cy: '1547',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1171,
+                    y: 1456.34,
+                    name: 'Смоленская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Смоленская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1206',
+                    cy: '1478',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1272,
+                    y: 1507.34,
+                    name: 'Арбатская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Арбатская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1285',
+                    cy: '1478',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1387,
+                    y: 1532.34,
+                    name: 'Александровский сад',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Александровский сад',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1371',
+                    cy: '1537',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 985,
+                    y: 1466.34,
+                    name: 'Выставочная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Выставочная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '967',
+                    cy: '1458',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 714,
+                    y: 1361.34,
+                    name: 'Международная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Международная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '857',
+                    cy: '1383',
+                    r: '5',
+                    fill: '#00C1F3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1429,
+                    y: 1778.34,
+                    name: 'Октябрьская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Октябрьская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1401',
+                    cy: '1785',
+                    r: '5',
+                    fill: '#894E35'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1416',
+                    cy: '1770',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1586,
+                    y: 1809.34,
+                    name: 'Добрынинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Добрынинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1581',
+                    cy: '1788',
+                    r: '5',
+                    fill: '#894E35'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1608,
+                    y: 1702.34,
+                    name: 'Павелецкая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Павелецкая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1730',
+                    cy: '1682',
+                    r: '5',
+                    fill: '#48B85E'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1745',
+                    cy: '1696',
+                    r: '5',
+                    fill: '#894E35'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1780,
+                    y: 1574.34,
+                    name: 'Таганская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Таганская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1823',
+                    cy: '1593',
+                    r: '5',
+                    fill: '#894E35'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1843',
+                    cy: '1604',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1281,
+                    y: 1069.34,
+                    name: 'Новослободская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новослободская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1390',
+                    cy: '1084',
+                    r: '5',
+                    fill: '#894E35'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1240,
+                    y: 1166.34,
+                    name: 'Белорусская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Белорусская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1247',
+                    cy: '1194',
+                    r: '5',
+                    fill: '#48B85E'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1232',
+                    cy: '1179',
+                    r: '5',
+                    fill: '#894E35'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1217',
+                    cy: '1133',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1104,
+                    y: 1372.34,
+                    name: 'Краснопресненская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Краснопресненская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1141',
+                    cy: '1345',
+                    r: '5',
+                    fill: '#894E35'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 563.336,
+                    name: 'Медведково',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Медведково',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '551',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 607.336,
+                    name: 'Бабушкинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бабушкинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '597',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 655.336,
+                    name: 'Свиблово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Свиблово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '645',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 697.336,
+                    name: 'Ботанический сад',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Ботанический сад',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '691',
+                    r: '5',
+                    fill: '#F58220'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1645',
+                    cy: '711',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 833.336,
+                    name: 'ВДНХ',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'ВДНХ',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '826',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 933.336,
+                    name: 'Алексеевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Алексеевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '926',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1508,
+                    y: 1126.34,
+                    name: 'Проспект Мира',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Проспект Мира',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1111',
+                    r: '5',
+                    fill: '#894E35'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1130',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1531,
+                    y: 1201.34,
+                    name: 'Сухаревская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Сухаревская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1197',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1684,
+                    y: 1293.34,
+                    name: 'Тургеневская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тургеневская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1665',
+                    cy: '1293',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1683,
+                    y: 1430.34,
+                    name: 'Китай-город',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Китай-город',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1406',
+                    r: '5',
+                    fill: '#F58220'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1426',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1368,
+                    y: 1840.34,
+                    name: 'Шаболовская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Шаболовская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1344',
+                    cy: '1841',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1341,
+                    y: 1885.34,
+                    name: 'Ленинский проспект',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Ленинский проспект',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '1888',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1328,
+                    y: 1959.34,
+                    name: 'Академическая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Академическая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1315',
+                    cy: '1949',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1328,
+                    y: 2005.34,
+                    name: 'Профсоюзная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Профсоюзная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '1997',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1327,
+                    y: 2053.34,
+                    name: 'Новые Черёмушки',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новые Черёмушки',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '2046',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1328,
+                    y: 2105.34,
+                    name: 'Калужская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Калужская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '2096',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1327,
+                    y: 2154.34,
+                    name: 'Беляево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Беляево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '2146',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1328,
+                    y: 2206.34,
+                    name: 'Коньково',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Коньково',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '2196',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1355,
+                    y: 2249.34,
+                    name: 'Тёплый Стан',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тёплый Стан',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1337',
+                    cy: '2246',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1393,
+                    y: 2286.34,
+                    name: 'Ясенево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Ясенево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1372',
+                    cy: '2281',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1428,
+                    y: 2316.34,
+                    name: 'Новоясеневская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новоясеневская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1410',
+                    cy: '2322',
+                    r: '5',
+                    fill: '#F58220'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 709,
+                    y: 777.336,
+                    name: 'Планерная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Планерная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '694',
+                    cy: '765',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 709,
+                    y: 856.336,
+                    name: 'Сходненская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Сходненская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '693',
+                    cy: '849',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 629,
+                    y: 940.336,
+                    name: 'Тушинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тушинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '750',
+                    cy: '931',
+                    r: '5',
+                    fill: '#8E479B'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '750',
+                    cy: '967',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 729,
+                    y: 1019.34,
+                    name: 'Спартак',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Спартак',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '816',
+                    cy: '997',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 738,
+                    y: 1053.34,
+                    name: 'Щукинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Щукинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '856',
+                    cy: '1035',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 746.828,
+                    y: 1091.34,
+                    name: 'Октябрьское',
+                    type: Shapes.Text
+                },
+                {
+                    x: 820.305,
+                    y: 1114.34,
+                    name: 'Поле',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Октябрьское Поле',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '885',
+                    cy: '1091',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 955,
+                    y: 1195.34,
+                    name: 'Полежаевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Полежаевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '927',
+                    cy: '1194',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 996,
+                    y: 1344.34,
+                    name: 'Улица',
+                    type: Shapes.Text
+                },
+                {
+                    x: 996,
+                    y: 1367.34,
+                    name: '1905 года',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Улица 1905 года',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1071',
+                    cy: '1335',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1166,
+                    y: 1322.34,
+                    name: 'Баррикадная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Баррикадная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1161',
+                    cy: '1345',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1345,
+                    y: 1375.34,
+                    name: 'Пушкинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Пушкинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1362',
+                    cy: '1344',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1438,
+                    y: 1328.34,
+                    name: 'Кузнецкий Мост',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кузнецкий Мост',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1587',
+                    cy: '1345',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1799,
+                    y: 1672.34,
+                    name: 'Пролетарская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Пролетарская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1935',
+                    cy: '1641',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1960.18,
+                    y: 1670.34,
+                    name: 'Волгоградский',
+                    type: Shapes.Text
+                },
+                {
+                    x: 2014.79,
+                    y: 1693.34,
+                    name: 'проспект',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Волгоградский проспект',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2059',
+                    cy: '1641',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2147,
+                    y: 1669.34,
+                    name: 'Текстильщики',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Текстильщики',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2145',
+                    cy: '1641',
+                    r: '5',
+                    fill: '#8E479B'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '2130',
+                    cy: '1656',
+                    r: '5',
+                    fill: '#EA4184'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2115,
+                    y: 1703.34,
+                    name: 'Кузьминки',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кузьминки',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2232',
+                    cy: '1697',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2317,
+                    y: 1766.34,
+                    name: 'Рязанский проспект',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Рязанский проспект',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2299',
+                    cy: '1762',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2372,
+                    y: 1821.34,
+                    name: 'Выхино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Выхино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2354',
+                    cy: '1816',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2401,
+                    y: 1851.34,
+                    name: 'Лермонтовский',
+                    type: Shapes.Text
+                },
+                {
+                    x: 2401,
+                    y: 1874.34,
+                    name: 'проспект',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лермонтовский проспект',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2380',
+                    cy: '1864',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2398,
+                    y: 1968.34,
+                    name: 'Жулебино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Жулебино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2380',
+                    cy: '1962',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2398,
+                    y: 2038.34,
+                    name: 'Котельники',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Котельники',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2381',
+                    cy: '2028',
+                    r: '5',
+                    fill: '#8E479B'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2405,
+                    y: 1303.34,
+                    name: 'Новокосино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новокосино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2455',
+                    cy: '1325',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2315,
+                    y: 1349.34,
+                    name: 'Новогиреево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новогиреево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2362',
+                    cy: '1325',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2230,
+                    y: 1304.34,
+                    name: 'Перово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Перово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2260',
+                    cy: '1326',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2056,
+                    y: 1439.34,
+                    name: 'Авиамоторная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Авиамоторная',
+            markers: []
+        },
+        {
+            labels: [
+                {
+                    x: 1966,
+                    y: 1522.34,
+                    name: 'Площадь Ильича',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Площадь Ильича',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1953',
+                    cy: '1522',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1698,
+                    y: 1647.34,
+                    name: 'Марксистская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Марксистская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1824',
+                    cy: '1615',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1495,
+                    y: 1624.34,
+                    name: 'Третьяковская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Третьяковская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1607',
+                    cy: '1581',
+                    r: '5',
+                    fill: '#F58220'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1618',
+                    cy: '1600',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 652,
+                    y: 1672.34,
+                    name: 'Парк Победы',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Парк Победы',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '800',
+                    cy: '1665',
+                    r: '5',
+                    fill: '#0078BF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '813',
+                    cy: '1652',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 771,
+                    y: 1726.34,
+                    name: 'Минская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Минская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '764',
+                    cy: '1700',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 1788.34,
+                    name: 'Ломоносовский',
+                    type: Shapes.Text
+                },
+                {
+                    x: 769,
+                    y: 1811.34,
+                    name: 'проспект',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Ломоносовский проспект',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '1796',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 1851.98,
+                    name: 'Раменки',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Раменки',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '1846',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 1901.63,
+                    name: 'Мичуринскийпроспект',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Мичуринскийпроспект',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '1896',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 1951.27,
+                    name: 'Озёрная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Озёрная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '1946',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 2000.92,
+                    name: 'Говорово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Говорово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '1996',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 2050.56,
+                    name: 'Солнцево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Солнцево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '2046',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 2100.21,
+                    name: 'Боровское шоссе',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Боровское шоссе',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '2096',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 2149.85,
+                    name: 'Новопеределкино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новопеределкино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '2146',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 769,
+                    y: 2199.5,
+                    name: 'Рассказовка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Рассказовка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '754',
+                    cy: '2193',
+                    r: '5',
+                    fill: '#FFC61A'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1321,
+                    y: 555.336,
+                    name: 'Алтуфьево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Алтуфьево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '545',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1321,
+                    y: 605.336,
+                    name: 'Бибирево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бибирево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '595',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1321,
+                    y: 655.336,
+                    name: 'Отрадное',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Отрадное',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '645',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1316,
+                    y: 721.336,
+                    name: 'Владыкино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Владыкино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '706',
+                    r: '5',
+                    fill: '#A1A2A3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '725',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1316,
+                    y: 781.336,
+                    name: 'Петровско-Разумовская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Петровско-Разумовская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '801',
+                    r: '5',
+                    fill: '#A1A2A3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1318',
+                    cy: '801',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1314,
+                    y: 880.336,
+                    name: 'Тимирязевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тимирязевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1298',
+                    cy: '873',
+                    r: '5',
+                    fill: '#A1A2A3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1259',
+                    cy: '873',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1329,
+                    y: 999.336,
+                    name: 'Савёловская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Савёловская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1281',
+                    cy: '1009',
+                    r: '5',
+                    fill: '#FFC61A'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '1009',
+                    r: '5',
+                    fill: '#A1A2A3'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1296',
+                    cy: '1009',
+                    r: '5',
+                    fill: '#6AC9C8'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1259',
+                    cy: '1009',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1306,
+                    y: 1125.34,
+                    name: 'Менделеевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Менделеевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1403',
+                    cy: '1098',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1376,
+                    y: 1184.34,
+                    name: 'Цветной',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1376,
+                    y: 1207.34,
+                    name: 'бульвар',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Цветной бульвар',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1481',
+                    cy: '1185',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1243,
+                    y: 1306.34,
+                    name: 'Чеховская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Чеховская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1351',
+                    cy: '1325',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1240,
+                    y: 1584.34,
+                    name: 'Боровицкая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Боровицкая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1352',
+                    cy: '1558',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1517,
+                    y: 1708.34,
+                    name: 'Полянка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Полянка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1517',
+                    cy: '1721',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1558,
+                    y: 1757.34,
+                    name: 'Серпуховская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Серпуховская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1566',
+                    cy: '1773',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1541,
+                    y: 1859.34,
+                    name: 'Тульская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тульская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1646',
+                    cy: '1850',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1688,
+                    y: 1948.34,
+                    name: 'Нагатинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Нагатинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1940',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1684,
+                    y: 2005.34,
+                    name: 'Нагорная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Нагорная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '1997',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1519.37,
+                    y: 2040.34,
+                    name: 'Нахимовский',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1560.79,
+                    y: 2063.34,
+                    name: 'проспект',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Нахимовский проспект',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2045',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1482,
+                    y: 2099.34,
+                    name: 'Севастопольская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Севастопольская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2096',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1515,
+                    y: 2152.34,
+                    name: 'Чертановская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Чертановская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2146',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1581,
+                    y: 2201.34,
+                    name: 'Южная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Южная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2196',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1553,
+                    y: 2252.34,
+                    name: 'Пражская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Пражская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2246',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 2306.34,
+                    name: 'Улица',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1689,
+                    y: 2329.34,
+                    name: 'Академика Янгеля',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Улица Академика Янгеля',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2296',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1689,
+                    y: 2356.34,
+                    name: 'Аннино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Аннино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2346',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1686,
+                    y: 2399.34,
+                    name: 'Бульвар',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1686,
+                    y: 2422.34,
+                    name: 'Дмитрия Донского',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бульвар Дмитрия Донского',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1666',
+                    cy: '2397',
+                    r: '5',
+                    fill: '#A1A2A3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 940,
+                    y: 585.336,
+                    name: 'Селигерская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Селигерская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1074',
+                    cy: '577',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1036,
+                    y: 674.336,
+                    name: 'Верхние',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1036,
+                    y: 697.336,
+                    name: 'Лихоборы',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Верхние Лихоборы',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1130',
+                    cy: '670',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1126,
+                    y: 769.336,
+                    name: 'Окружная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Окружная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1234',
+                    cy: '776',
+                    r: '5',
+                    fill: '#B4D445'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1234',
+                    cy: '750',
+                    r: '5',
+                    fill: '#FFA8AF'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1259',
+                    cy: '766',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1432,
+                    y: 848.336,
+                    name: 'Фонвизинская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Фонвизинская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1414',
+                    cy: '843',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1498,
+                    y: 914.336,
+                    name: 'Бутырская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бутырская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1479',
+                    cy: '909',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1525,
+                    y: 996.336,
+                    name: 'Марьина Роща',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Марьина Роща',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1500',
+                    cy: '991',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1450,
+                    y: 1038.34,
+                    name: 'Достоевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Достоевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1501',
+                    cy: '1053',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1515,
+                    y: 1170.34,
+                    name: 'Трубная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Трубная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1502',
+                    cy: '1185',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1642,
+                    y: 1343.34,
+                    name: 'Сретенский бульвар',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Сретенский бульвар',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1649',
+                    cy: '1308',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1726,
+                    y: 1400.34,
+                    name: 'Чкаловская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Чкаловская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1856',
+                    cy: '1404',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1838,
+                    y: 1511.34,
+                    name: 'Римская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Римская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1935',
+                    cy: '1504',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1901,
+                    y: 1577.34,
+                    name: 'Крестьянская',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1901,
+                    y: 1600.34,
+                    name: 'Застава',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Крестьянская Застава',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1935',
+                    cy: '1618',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2037,
+                    y: 1779.34,
+                    name: 'Кожуховская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Кожуховская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2020',
+                    cy: '1774',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2114,
+                    y: 1856.34,
+                    name: 'Печатники',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Печатники',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2098',
+                    cy: '1851',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2194,
+                    y: 1936.34,
+                    name: 'Волжская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Волжская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2176',
+                    cy: '1930',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2230,
+                    y: 2005.34,
+                    name: 'Люблино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Люблино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2216',
+                    cy: '1999',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2230,
+                    y: 2067.34,
+                    name: 'Братиславская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Братиславская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2216',
+                    cy: '2060',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2230,
+                    y: 2126.34,
+                    name: 'Марьино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Марьино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2216',
+                    cy: '2120',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2230,
+                    y: 2186.34,
+                    name: 'Борисово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Борисово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2216',
+                    cy: '2180',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2230,
+                    y: 2246.34,
+                    name: 'Шипиловская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Шипиловская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2216',
+                    cy: '2240',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2230,
+                    y: 2302.34,
+                    name: 'Зябликово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Зябликово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2217',
+                    cy: '2296',
+                    r: '5',
+                    fill: '#B4D445'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1800,
+                    y: 2123.34,
+                    name: 'Варшавская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Варшавская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1808',
+                    cy: '2096',
+                    r: '5',
+                    fill: '#6AC9C8'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1685,
+                    y: 2123.34,
+                    name: 'Каховская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Каховская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1690',
+                    cy: '2096',
+                    r: '5',
+                    fill: '#6AC9C8'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 984,
+                    y: 1442.34,
+                    name: 'Деловой центр',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Деловой центр',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '967',
+                    cy: '1438',
+                    r: '5',
+                    fill: '#6AC9C8'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 909,
+                    y: 1286.34,
+                    name: 'Шелепиха',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Шелепиха',
+            markers: []
+        },
+        {
+            labels: [
+                {
+                    x: 956,
+                    y: 1234.34,
+                    name: 'Хорошёвская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Хорошёвская',
+            markers: []
+        },
+        {
+            labels: [
+                {
+                    x: 956,
+                    y: 1234.34,
+                    name: 'Хорошёвская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Хорошёвская',
+            markers: []
+        },
+        {
+            labels: [
+                {
+                    x: 956,
+                    y: 1234.34,
+                    name: 'Хорошёвская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Хорошёвская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '927',
+                    cy: '1214',
+                    r: '5',
+                    fill: '#FFC61A'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '927',
+                    cy: '1229',
+                    r: '5',
+                    fill: '#6AC9C8'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 971,
+                    y: 1109.34,
+                    name: 'ЦСКА',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'ЦСКА',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1015',
+                    cy: '1125',
+                    r: '5',
+                    fill: '#FFC61A'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1016',
+                    cy: '1140',
+                    r: '5',
+                    fill: '#6AC9C8'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1048.21,
+                    y: 1152.34,
+                    name: 'Петровский',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1116.55,
+                    y: 1175.34,
+                    name: 'парк',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Петровский парк',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1138',
+                    cy: '1113',
+                    r: '5',
+                    fill: '#FFC61A'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1138',
+                    cy: '1125',
+                    r: '5',
+                    fill: '#6AC9C8'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1269,
+                    y: 2366.34,
+                    name: 'Битцевский парк',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Битцевский парк',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1425',
+                    cy: '2337',
+                    r: '5',
+                    fill: '#ACBFE3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1492,
+                    y: 2366.34,
+                    name: 'Лесопарковая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лесопарковая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1554',
+                    cy: '2337',
+                    r: '5',
+                    fill: '#ACBFE3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1570.27,
+                    y: 2392.34,
+                    name: 'Улица',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1451.05,
+                    y: 2415.34,
+                    name: 'Старокачаловская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Улица Старокачаловская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1642',
+                    cy: '2397',
+                    r: '5',
+                    fill: '#ACBFE3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1570.27,
+                    y: 2461.34,
+                    name: 'Улица',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1494.6,
+                    y: 2484.34,
+                    name: 'Скобелевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Улица Скобелевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1642',
+                    cy: '2466',
+                    r: '5',
+                    fill: '#ACBFE3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1550.36,
+                    y: 2530.34,
+                    name: 'Бульвар',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1444.05,
+                    y: 2553.34,
+                    name: 'Адмирала Ушакова',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бульвар Адмирала Ушакова',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1642',
+                    cy: '2535',
+                    r: '5',
+                    fill: '#ACBFE3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1570.27,
+                    y: 2601.34,
+                    name: 'Улица',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1530.01,
+                    y: 2624.34,
+                    name: 'Горчакова',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Улица Горчакова',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1642',
+                    cy: '2601',
+                    r: '5',
+                    fill: '#ACBFE3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1528.16,
+                    y: 2659.34,
+                    name: 'Бунинская',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1570.07,
+                    y: 2682.34,
+                    name: 'Аллея',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бунинская Аллея',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1643',
+                    cy: '2666',
+                    r: '5',
+                    fill: '#ACBFE3'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1155,
+                    y: 819.336,
+                    name: 'Лихоборы',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лихоборы',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1136',
+                    cy: '808',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1093,
+                    y: 871.336,
+                    name: 'Коптево',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Коптево',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1069',
+                    cy: '862',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1005,
+                    y: 896.336,
+                    name: 'Балтийская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Балтийская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1017',
+                    cy: '915',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 940,
+                    y: 1076.34,
+                    name: 'Панфиловская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Панфиловская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '923',
+                    cy: '1071',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 920,
+                    y: 1139.34,
+                    name: 'Зорге',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Зорге',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '905',
+                    cy: '1119',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 774,
+                    y: 1198.34,
+                    name: 'Хорошёво',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Хорошёво',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '886',
+                    cy: '1194',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 909,
+                    y: 1286.34,
+                    name: 'Шелепиха',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Шелепиха',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '898',
+                    cy: '1315',
+                    r: '5',
+                    fill: '#FFC61A'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '910',
+                    cy: '1327',
+                    r: '5',
+                    fill: '#6AC9C8'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '875',
+                    cy: '1292',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 747,
+                    y: 1418.34,
+                    name: 'Деловой центр',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Деловой центр',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '877',
+                    cy: '1383',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1164,
+                    y: 1830.34,
+                    name: 'Лужники',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лужники',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1137',
+                    cy: '1820',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1341,
+                    y: 1914.34,
+                    name: 'Площадь Гагарина',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Площадь Гагарина',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1314',
+                    cy: '1907',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1522,
+                    y: 1966.34,
+                    name: 'Крымская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Крымская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1541',
+                    cy: '1935',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1704,
+                    y: 1845.34,
+                    name: 'Верхние',
+                    type: Shapes.Text
+                },
+                {
+                    x: 1704,
+                    y: 1868.34,
+                    name: 'Котлы',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Верхние Котлы',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1714',
+                    cy: '1893',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1814,
+                    y: 1877.34,
+                    name: 'ЗИЛ',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'ЗИЛ',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1804',
+                    cy: '1854',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1847,
+                    y: 1725.34,
+                    name: 'Дубровка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Дубровка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1945',
+                    cy: '1700',
+                    r: '5',
+                    fill: '#B4D445'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1945',
+                    cy: '1740',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1990,
+                    y: 1725.34,
+                    name: 'Угрешская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Угрешская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1983',
+                    cy: '1701',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2124,
+                    y: 1411.34,
+                    name: 'Андроновка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Андроновка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2111',
+                    cy: '1405',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2135,
+                    y: 1353.34,
+                    name: 'Шоссе',
+                    type: Shapes.Text
+                },
+                {
+                    x: 2135,
+                    y: 1376.34,
+                    name: 'Энтузиастов',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Шоссе Энтузиастов',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2156',
+                    cy: '1327',
+                    r: '5',
+                    fill: '#FFC61A'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '2116',
+                    cy: '1327',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2128,
+                    y: 1252.34,
+                    name: 'Соколиная гора',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Соколиная гора',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2113',
+                    cy: '1245',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1973,
+                    y: 1157.34,
+                    name: 'Измайлово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Измайлово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2094',
+                    cy: '1150',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1992,
+                    y: 925.336,
+                    name: 'Локомотив',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Локомотив',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1971',
+                    cy: '914',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1853,
+                    y: 785.336,
+                    name: 'Белокаменная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Белокаменная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1842',
+                    cy: '798',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1790,
+                    y: 752.336,
+                    name: 'Ростокино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Ростокино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1785',
+                    cy: '765',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2006,
+                    y: 1368.34,
+                    name: 'Лефортово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лефортово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1994',
+                    cy: '1358',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2056,
+                    y: 1439.34,
+                    name: 'Авиамоторная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Авиамоторная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2024',
+                    cy: '1451',
+                    r: '5',
+                    fill: '#FFC61A'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '2024',
+                    cy: '1416',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2114,
+                    y: 1484.34,
+                    name: 'Нижегородская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Нижегородская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2097',
+                    cy: '1489',
+                    r: '5',
+                    fill: '#E66AC0'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '2097',
+                    cy: '1466',
+                    r: '5',
+                    fill: '#FFA8AF'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2197,
+                    y: 1576.34,
+                    name: 'Стахановская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Стахановская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2178',
+                    cy: '1570',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2281,
+                    y: 1703.34,
+                    name: 'Окская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Окская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2263',
+                    cy: '1697',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2128,
+                    y: 1822.34,
+                    name: 'Юго-Восточная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Юго-Восточная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2289',
+                    cy: '1815',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2401,
+                    y: 1911.34,
+                    name: 'Косино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Косино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2380',
+                    cy: '1888',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2578,
+                    y: 1917.34,
+                    name: 'Улица',
+                    type: Shapes.Text
+                },
+                {
+                    x: 2578,
+                    y: 1940.34,
+                    name: 'Дмитриевского',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Улица Дмитриевского',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2560',
+                    cy: '1922',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2578,
+                    y: 1983.34,
+                    name: 'Лухмановская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лухмановская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2561',
+                    cy: '1978',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 2578,
+                    y: 2038.34,
+                    name: 'Некрасовка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Некрасовка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '2562',
+                    cy: '2034',
+                    r: '5',
+                    fill: '#E66AC0'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1181,
+                    y: 207.336,
+                    name: 'Лобня',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лобня',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '197',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1077,
+                    y: 257.336,
+                    name: 'Шереметьевская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Шереметьевская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '249',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1126,
+                    y: 307.336,
+                    name: 'Хлебниково',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Хлебниково',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '299',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1159,
+                    y: 357.336,
+                    name: 'Водники',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Водники',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '349',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1105,
+                    y: 407.336,
+                    name: 'Долгопрудная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Долгопрудная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '399',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1124,
+                    y: 457.336,
+                    name: 'Новодачная',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Новодачная',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '449',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1189,
+                    y: 508.336,
+                    name: 'Марк',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Марк',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '501',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1136,
+                    y: 557.336,
+                    name: 'Лианозово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Лианозово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '550',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1106,
+                    y: 605.336,
+                    name: 'Бескудниково',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Бескудниково',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '599',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1150,
+                    y: 654.336,
+                    name: 'Дегунино',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Дегунино',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1260',
+                    cy: '648',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 1034,
+                    y: 1279.34,
+                    name: 'Беговая',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Беговая',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '1024',
+                    cy: '1291',
+                    r: '5',
+                    fill: '#8E479B'
+                },
+                {
+                    type: Shapes.Circle,
+                    cx: '1042',
+                    cy: '1308',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 978,
+                    y: 1403.34,
+                    name: 'Тестовская',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Тестовская',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '967',
+                    cy: '1383',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 317,
+                    y: 1349.34,
+                    name: 'Рабочий Посёлок',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Рабочий Посёлок',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '499',
+                    cy: '1341',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 361,
+                    y: 1293.34,
+                    name: 'Сетунь',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Сетунь',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '444',
+                    cy: '1286',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 279,
+                    y: 1239.34,
+                    name: 'Немчиновка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Немчиновка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '416',
+                    cy: '1234',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 306,
+                    y: 1189.34,
+                    name: 'Сколково',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Сколково',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '416',
+                    cy: '1185',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 319,
+                    y: 1139.34,
+                    name: 'Баковка',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Баковка',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '415',
+                    cy: '1135',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        },
+        {
+            labels: [
+                {
+                    x: 303,
+                    y: 1089.34,
+                    name: 'Одинцово',
+                    type: Shapes.Text
+                }
+            ],
+            stationName: 'Одинцово',
+            markers: [
+                {
+                    type: Shapes.Circle,
+                    cx: '415',
+                    cy: '1082',
+                    r: '5',
+                    fill: '#FAA400'
+                }
+            ]
+        }
     ]
 }

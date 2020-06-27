@@ -1,0 +1,19 @@
+.stationWrapper {
+    cursor: pointer;
+}
+
+.stationWrapper:hover .stationName text {
+    fill: red;
+}
+
+.stationWrapper:hover .stationMarker circle {
+    fill: #2e2e2e;
+}
+
+.stationMarker circle {
+    transition: fill .4s;
+}
+
+.stationName text {
+    transition: fill .4s;
+}

@@ -72,7 +72,6 @@ class Metro extends Component {
                             lineLabels={ schemeData.lineLabels }
                             transfers={ schemeData.transfers }
                             stations={ schemeData.stations }
-                            labels={ schemeData.labels }
                         />
                     </div>
                 </div>

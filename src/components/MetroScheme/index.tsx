@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Circle, Path, Text } from '../../data/moscow/schemeData'
+import { Circle, Path, Station, Text } from '../../data/moscow/schemeData'
 
 import { renderLines } from '../../helpers'
 
-import MetroStation from '../MetroStation'
-import MetroLabel from '../MetroLabel'
+import MetroStations from './MetroStations'
 
 import styles from './MetroScheme.module.css'
 
@@ -14,25 +13,18 @@ interface IProps {
     lines: (Path | Circle)[]
     lineLabels: (Circle | Text)[]
     transfers: Path[]
-    stations: Circle[]
-    labels: Text[]
+    stations: Station[]
 }
 
 interface IState {
-    selectedStations: string[]
+    selectedStations: Station[]
 }
 
 class MetroScheme extends Component<IProps, IState> {
     state = { selectedStations: [] }
 
-    onStationClick = (stationId: string) => {
-        const { selectedStations } = this.state
-
-        this.props.labels.forEach((label: Text) => {
-            if (label.id === stationId) {
-                this.setState({ selectedStations: [...selectedStations, stationId] })
-            }
-        })
+    onStationClick = (station: Station) => {
+        console.log(station)
     }
 
 
@@ -44,7 +36,6 @@ class MetroScheme extends Component<IProps, IState> {
             lineLabels,
             transfers,
             stations,
-            labels
         } = this.props
         const { selectedStations } = this.state
 
@@ -61,13 +52,8 @@ class MetroScheme extends Component<IProps, IState> {
                     { renderLines(lineLabels) }
                     { renderLines(transfers) }
 
-                    <MetroStation
+                    <MetroStations
                         stations={ stations }
-                        selectedStations={ selectedStations }
-                        onStationClick={ this.onStationClick }
-                    />
-                    <MetroLabel
-                        labels={ labels }
                         selectedStations={ selectedStations }
                         onStationClick={ this.onStationClick }
                     />

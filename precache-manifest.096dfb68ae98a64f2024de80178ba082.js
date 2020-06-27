@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "28ae8383214fa1728d72c3805d5e1ca6",
+    "revision": "70a54894a781bcd66206821127b8df1d",
     "url": "/map-metro/index.html"
   },
   {
-    "revision": "bb5b08fa15cfe4a88690",
+    "revision": "abcb5e06d3334acc3ab7",
     "url": "/map-metro/static/css/main.15d21b66.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/map-metro/static/js/2.8b87ec3c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bb5b08fa15cfe4a88690",
-    "url": "/map-metro/static/js/main.9e8b1ca7.chunk.js"
+    "revision": "abcb5e06d3334acc3ab7",
+    "url": "/map-metro/static/js/main.4e97fff3.chunk.js"
   },
   {
     "revision": "e5fad2df3f0770b60a0e",

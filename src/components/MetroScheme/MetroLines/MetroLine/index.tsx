@@ -9,6 +9,7 @@ import styles from './MetroLine.module.css'
 interface IProps {
     line: LinePath|LineCircle
     onLineHover: (isHovered: boolean, line: LinePath|LineCircle) => void
+    onLineClick: (line: LinePath|LineCircle) => void
 }
 
 interface IState {
@@ -16,14 +17,20 @@ interface IState {
 }
 
 class MetroLine extends Component<IProps, IState> {
-    state: IState = {
-        isHovered: false
-    }
+    state: IState = { isHovered: false }
 
     handleHover = (): void => {
+        const { line, onLineHover } = this.props
+
         this.setState(prevState => ({ isHovered: !prevState.isHovered }), () => {
-            this.props.onLineHover(this.state.isHovered, this.props.line)
+            onLineHover(this.state.isHovered, line)
         })
+    }
+
+    handleClick = ():void => {
+        const { line, onLineClick } = this.props
+
+        onLineClick(line)
     }
 
     render() {
@@ -33,6 +40,7 @@ class MetroLine extends Component<IProps, IState> {
         switch (line.type) {
             case Shapes.Path: return (
                 <g
+                    onClick={ this.handleClick }
                     onMouseEnter={ this.handleHover }
                     onMouseLeave={ this.handleHover }
                 >
@@ -42,6 +50,7 @@ class MetroLine extends Component<IProps, IState> {
             )
             case Shapes.Circle: return (
                 <g
+                    onClick={ this.handleClick }
                     onMouseEnter={ this.handleHover }
                     onMouseLeave={ this.handleHover }
                 >

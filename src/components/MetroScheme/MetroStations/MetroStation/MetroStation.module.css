@@ -19,5 +19,5 @@
 }
 
 .stationName text {
-    transition: fill .4s;
+    transition: all .4s;
 }

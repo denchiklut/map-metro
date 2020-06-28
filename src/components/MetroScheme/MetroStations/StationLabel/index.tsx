@@ -14,9 +14,9 @@ class StationLabel extends Component<Iprops> {
             <>
                 <text
                     fill='black'
-                    stroke={ isSelected ? 'black' : 'white' }
+                    stroke='white'
                     strokeOpacity={ 0.9 }
-                    strokeWidth={ isSelected ? 1: 4 }
+                    strokeWidth={ 4 }
                     fontFamily='Roboto'
                     fontSize={ 20 }
                     letterSpacing='0em'
@@ -29,7 +29,7 @@ class StationLabel extends Component<Iprops> {
                 </text>
 
                 <text
-                    fill='black'
+                    fill={ isSelected ? 'blue' : 'black'}
                     fontFamily='Roboto'
                     fontSize={ 20 }
                     letterSpacing='0em'

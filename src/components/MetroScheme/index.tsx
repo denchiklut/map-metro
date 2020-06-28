@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import { LineCircle, LinePath, Path, Station } from '../../data/moscow/schemeData'
 
 import { renderLines } from '../../helpers'
-
 import MetroStations from './MetroStations'
+import MetroLines from './MetroLines'
 
 import styles from './MetroScheme.module.css'
-import MetroLines from './MetroLines'
 
 interface IProps {
     size: { width: number, height: number }
@@ -27,7 +26,7 @@ class MetroScheme extends Component<IProps, IState> {
         hoveredStations: []
     }
 
-    onStationClick = (station: Station) => {
+    onStationClick = (station: Station):void => {
         const { selectedStations } = this.state
         const index = selectedStations.indexOf(station)
 
@@ -41,7 +40,7 @@ class MetroScheme extends Component<IProps, IState> {
         console.log(station)
     }
 
-    onLineHover = (isHovered: boolean, line: LinePath|LineCircle) => {
+    onLineHover = (isHovered: boolean, line: LinePath|LineCircle):void => {
         const { hoveredStations } = this.state
 
         if (isHovered) {
@@ -49,6 +48,18 @@ class MetroScheme extends Component<IProps, IState> {
         } else if (hoveredStations.length !== 0) {
             this.setState({ hoveredStations: []})
         }
+    }
+
+    onLineClick =  (line: LinePath|LineCircle): void => {
+        const { stations } = this.props
+        const lineStations: Station[] = []
+
+        line.stationIds.forEach((stationId: number) => {
+            const foundStation = stations.find(station => station.id === stationId)
+            if (foundStation) lineStations.push(foundStation)
+        })
+
+        lineStations.forEach((station: Station) => this.onStationClick(station))
     }
 
     render() {
@@ -71,7 +82,11 @@ class MetroScheme extends Component<IProps, IState> {
                 >
                     { renderLines(resources) }
 
-                    <MetroLines lines={ lines } onLineHover={ this.onLineHover } />
+                    <MetroLines
+                        lines={ lines }
+                        onLineHover={ this.onLineHover }
+                        onLineClick={ this.onLineClick }
+                    />
 
                     { renderLines(transfers) }
 

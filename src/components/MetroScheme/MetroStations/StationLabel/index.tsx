@@ -1,45 +1,81 @@
 import React, { Component } from 'react'
-import { Label } from '../../../../data/moscow/schemeData'
+import { LabelBg, LabelText, Shapes } from '../../../../data/moscow/schemeData'
 
 interface Iprops {
     isSelected: boolean
-    labels: Label[]
+    isHovered: boolean
+    labels: (LabelText|LabelBg)[]
 }
 
 class StationLabel extends Component<Iprops> {
+    renderBg = () => {
+        const { labels, isSelected, isHovered } = this.props
+        if (isHovered||isSelected) {
+            return labels.map((item: LabelText|LabelBg, index: number) => {
+                if (item.type === Shapes.Rect) {
+                    return (
+                        <rect
+                            key={ index }
+                            { ...item }
+                            fill={ isHovered ? '#dcdad8':  '#5a5a5a'}
+                        />
+                    )
+                }
+
+                return null
+            })
+        }
+    }
+
     render() {
-        const { labels, isSelected } = this.props
+        const { labels, isSelected, isHovered } = this.props
 
         return (
             <>
+                { this.renderBg() }
+
+                { !isSelected && (
+                    <text
+                        fill='black'
+                        stroke='white'
+                        strokeOpacity={ 0.9 }
+                        strokeWidth={ 4 }
+                        fontFamily='Roboto'
+                        fontSize={ 20 }
+                        letterSpacing='0em'
+                    >
+                        { labels.map((item: LabelText|LabelBg, index: number) => {
+                            if (item.type === Shapes.Text) {
+                                return (
+                                    <tspan key={ index } { ...item }>
+                                        { item.name }
+                                    </tspan>
+                                )
+                            }
+
+                            return null
+                        }) }
+                    </text>
+                ) }
+
                 <text
-                    fill='black'
-                    stroke='white'
-                    strokeOpacity={ 0.9 }
-                    strokeWidth={ 4 }
+                    fill={ isSelected && isHovered ? 'black' : isSelected ? 'white' : 'black'}
                     fontFamily='Roboto'
                     fontSize={ 20 }
                     letterSpacing='0em'
-                >
-                    { labels.map((item: Label, index: number) => (
-                        <tspan key={ index } { ...item }>
-                            { item.name }
-                        </tspan>
-                    )) }
-                </text>
-
-                <text
-                    fill={ isSelected ? 'blue' : 'black'}
-                    fontFamily='Roboto'
-                    fontSize={ 20 }
-                    letterSpacing='0em'
 
                 >
-                    { labels.map((item: Label, index: number) => (
-                        <tspan key={ index } { ...item }>
-                            { item.name }
-                        </tspan>
-                    )) }
+                    { labels.map((item: (LabelText|LabelBg), index: number) => {
+                        if (item.type === Shapes.Text) {
+                            return (
+                                <tspan key={ index } { ...item }>
+                                    { item.name }
+                                </tspan>
+                            )
+                        }
+
+                        return null
+                    }) }
 
                 </text>
             </>

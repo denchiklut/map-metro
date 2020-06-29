@@ -14,18 +14,31 @@ interface IProps {
     onStationClick: (station: Station) => void
 }
 
-class MetroStation extends Component<IProps> {
+interface IState {
+    isLocalHovered: boolean
+}
+
+class MetroStation extends Component<IProps, IState> {
+    state: IState = { isLocalHovered: false }
+
     onStationClick = (): void => {
         const { station, onStationClick } = this.props
 
         onStationClick(station)
     }
 
+    handleHover = (): void => {
+        this.setState(prevState => ({ isLocalHovered: !prevState.isLocalHovered }))
+    }
+
     render() {
         const { station, isSelected, isHovered } = this.props
+        const { isLocalHovered } = this.state
 
         return (
             <g
+                onMouseEnter={ this.handleHover }
+                onMouseLeave={ this.handleHover }
                 className={ styles.stationWrapper }
                 onClick={ this.onStationClick }
             >
@@ -33,8 +46,12 @@ class MetroStation extends Component<IProps> {
                     <StationMarker markers={ station.markers } isSelected={ isSelected } />
                 </g>
 
-                <g className={ cn(styles.stationName, { [styles.hovered]: isHovered }) }>
-                    <StationLabel labels={ station.labels } isSelected={ isSelected } />
+                <g className={ cn(styles.stationName) }>
+                    <StationLabel
+                        labels={ station.labels }
+                        isSelected={ isSelected }
+                        isHovered={ isHovered||isLocalHovered }
+                    />
                 </g>
             </g>
         )
